@@ -1,0 +1,33 @@
+#Set ClearCase
+setenv CM_ROLE designer
+setenv CM_DFLT_VIEW xigpadi_geoff
+setenv CM_START /vobs/MSC_Legacy_Test/AutoLT
+setenv WINEDITOR nedit
+
+if (`uname` == SunOS) then
+  #Set Environment variables
+  setenv PATH /home/xigpadi/opt/bin:/usr/xpg4/bin:/usr/sfw/bin:/home/tool/bin:${PATH}
+  setenv LD_LIBRARY_PATH /home/xigpadi/opt/lib:${LD_LIBRARY_PATH}
+  setenv MANPATH /home/xigpadi/opt/share/man:/home/xigpadi/opt/man:${MANPATH}
+  setenv INFOPATH /home/xigpadi/opt/share/info
+  setenv PERL5LIB /home/xigpadi/opt/lib/perl
+  setenv CONFIG_SHELL /bin/bash
+  setenv CC gcc
+  setenv CXX g++
+endif
+
+#Set TITAN
+setenv QT_HOME_DIR $HOME
+
+#Set Editor
+setenv EDITOR nedit
+
+if ( -d /home/xigpadi/.terminfo ) then
+  #Set TERMINFO
+  setenv TERMINFO /home/xigpadi/.terminfo
+endif
+
+setenv TERM xtermc
+
+#Set less instead of more
+setenv PAGER 'less -iM'

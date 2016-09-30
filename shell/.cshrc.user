@@ -1,0 +1,62 @@
+# Disable XON/XOFF
+stty -ixon
+
+# Set alias
+source ~/.alias
+
+# Set complete
+source ~/.complete
+
+# Set colorful prompt
+set prompt = "%{\033[35m%}%m %{\033[32m%}%U[%@]%u %{\033[31m%}[%C3]%{\033[0m%} %# "
+
+# Set colors
+set listflags = x
+set color = ls-F
+set colorcat
+
+# Do autolisting of commands while completing.
+# Very handy. Example with "chmod". 
+#  % ch<TAB>
+#  now it shows all possible commands that start with "ch*".
+#  % chm<TAB>
+#  we have seen that there is only one chm* command. Thus, the <TAB> does:
+#  % chmod 
+#  This is among best tricks of TCSH. Learn this and you will be very fast
+#  on the command line.
+set autolist
+
+# Don't beep at all...
+# beeping is annoying, perhaps it is good only when you learn TCSH.
+# If you are a rookie in TCSH, try commenting it out. 
+set nobeep
+
+# Do autocorrection while completing...
+# It does some very rudimentary corrections. I was not disatisfied yet.
+# Try:
+# % cd /usr/loca/bin<TAB>
+# % cd /usr/local/bin     <- you get
+set autocorrect
+
+# Use the history of commands to aid expansion.
+# Found in new versions of tcsh (at least 6.10)
+set autoexpand
+
+# Enabled "complete" to "enhance".
+# If you have a file called "complete.tcsh" and you
+# want to edit it, do "vi c.t<TAB>" and that's it.
+set complete=enhance 
+
+# Possible values : cmd complete all
+# Put it to extreme auto.
+set correct=all
+
+# Symbolic links are expanded to their true values : chase
+# (possible values 'chase' 'ignore' 'expand')
+# When traversing directories with symlinks, this substitures them
+# with the real value. You will like it.
+set symlinks=chase
+
+# After a 'Ctrl-Z', it lists all the jobs.
+set listjobs
+

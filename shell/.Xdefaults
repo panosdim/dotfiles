@@ -1,0 +1,37 @@
+!General settings
+dt.obsolete:        true
+sdtimage.obsolete:  true
+
+!Nedit Settings
+nedit.shell:        /bin/bash
+Dtwm*NEdit*iconImage: nedit
+
+!File Manager Settings
+Dtfile*rereadTime:                          1
+Dtfile*title:                               CDE File Manager
+Dtfile*fileMenu.newFile.acceleratorText:    Alt+F
+Dtfile*fileMenu.newFile.accelerator:        Alt<Key>f
+Dtfile*fileMenu.newFolder.acceleratorText:  Alt+N
+Dtfile*fileMenu.newFolder.accelerator:      Alt<Key>n
+Dtfile*viewMenu.refresh.acceleratorText:    Ctrl+R
+Dtfile*viewMenu.refresh.accelerator:        Ctrl<Key>r
+Dtfile*fileMenu.changeTo.acceleratorText:   Ctrl+G
+Dtfile*fileMenu.changeTo.accelerator:       Ctrl<Key>g
+Dtfile*viewMenu.new.acceleratorText:        Ctrl+V
+Dtfile*viewMenu.new.accelerator:            Ctrl<Key>v
+
+!Terminal Settings
+Dtterm*geometry:  140x40
+Dtterm*userFont:  -dt-interface user-medium-r-normal-s*-*-*-*-*-m-*:
+
+!Mrxvt Settings
+Dtwm*mrxvt*iconImage: mrxvt
+
+!Vim Settings
+Dtwm*Vim*iconImage: vim
+Vim.geometry: 140x60
+Vim.font: -b&h-lucida sans typewriter-medium-r-normal-sans-12-120-72-72-m-70-iso8859-1
+
+!Firefox Settings
+Dtwm*Firefox*iconImage: firefox
+

@@ -1,0 +1,192 @@
+# Sample configuration for mrxvt-0.5.0. To use, copy it to ~/.mrxvtrc.
+#
+# This sets up a pseudo-transparent terminal with black tinted background, Xft
+# font, a transparent Firefox style tab-bar, and a next style scroll bar.
+#
+
+#
+# -----------------------------	TAB-BAR OPTIONS ------------------------------ #
+#
+
+Mrxvt.bottomTabbar:		True
+
+# Only show the tab bar if there is more than one tab.
+Mrxvt.autohideTabbar:		True
+
+# The number of tabs to attempt to keep visible. The width of tabs will shrink
+# to keep at least these many tabs visible.
+Mrxvt.minVisibleTabs:		15
+
+# The max width in chars for each tab (only used with x11 fonts, or if xftPFont
+# is not specified).
+# Mrxvt.maxTabWidth:		17
+
+# Hide left / right / close buttons in the tab bar.
+# Mrxvt.hideButtons:		True
+
+# Make the terminal title the same as the active tab title.
+Mrxvt.syncTabTitle:		True
+Mrxvt.syncTabIcon:		true
+
+# Tab bar colors
+Mrxvt.itabBackground:		azure4
+Mrxvt.tabBackground:		lightblue
+Mrxvt.itabForeground:		azure
+Mrxvt.tabForeground:		black
+
+#
+# ---------------------- SCROLLING / SCROLLBAR OPTIONS ----------------------- #
+#
+
+Mrxvt.scrollBar:		    true
+Mrxvt.scrollbarRight:		true
+Mrxvt.scrollbarStyle:		rxvt
+
+# Number of lines to save in the scroll back buffer for all tabs
+Mrxvt.saveLines:		65535
+
+# Don't scroll to the bottom every time some output is produced.
+Mrxvt.scrollTtyOutputInhibit:	true
+
+# Scroll to the bottom when a key is pressed.
+Mrxvt.scrollTtyKeypress:	true
+
+# Scroll bar colors
+Mrxvt.scrollColor:		#808080
+Mrxvt.troughColor:		#202020
+
+#
+# ---------------------------------- FONTS ----------------------------------- #
+#
+ 
+#Mrxvt.font:         -dt-interface system-medium-r-normal-*-*-*-*-*-m-*
+
+Mrxvt.xft:			    1
+Mrxvt.xftFont:			Inconsolata
+Mrxvt.xftSize:			11
+Mrxvt.xftAntialias:	1
+
+# The options below are better set using ~/.fonts.config. Mrxvt will use the
+# defaults passed to the fontconfig library.
+#
+Mrxvt.xftHinting:		    1
+Mrxvt.xftAutoHint:		  1
+Mrxvt.xftGlobalAdvance:	1
+Mrxvt.xftRGBA:		      rgb
+Mrxvt.xftslow:		      1
+
+# Don't load a multi-char font. This will reduce the line space if your multi
+# char font has different dimensions than the regular font. You might need to
+# comment it out if you want to use XIM and non-english fonts.
+Mrxvt.xftNomFont:		1
+
+
+#
+# ---------------------------------- CURSOR ---------------------------------- #
+#
+
+Mrxvt.cursorBlink:		true
+
+#
+# ---------------------------------- COLORS ---------------------------------- #
+#
+
+Mrxvt.foreground:   #f8f8f2
+Mrxvt.background:   #272822
+Mrxvt.cursorColor:  #f8f8f2
+
+# This makes reading man pages a little easier.
+Mrxvt.colorBD:			#00afaf
+Mrxvt.colorUL:			#00af00
+
+# black
+Mrxvt.color0:       #272822
+Mrxvt.color8:       #75715e
+
+# red
+Mrxvt.color1:       #f92672
+Mrxvt.color9:       #f92672
+
+# green
+Mrxvt.color2:       #a6e22e
+Mrxvt.color10:      #a6e22e
+
+# yellow
+Mrxvt.color3:       #f4bf75
+Mrxvt.color11:      #f4bf75
+
+# blue
+Mrxvt.color4:       #66d9ef
+Mrxvt.color12:      #66d9ef
+
+# magenta
+Mrxvt.color5:       #ae81ff
+Mrxvt.color13:      #ae81ff
+
+# cyan
+Mrxvt.color6:       #a1efe4
+Mrxvt.color14:      #a1efe4
+
+# white
+Mrxvt.color7:       #f8f8f2
+Mrxvt.color15:      #f9f8f5
+
+#
+# ------------------------------- MISC OPTIONS ------------------------------- #
+#
+
+# The value of the TERM environment variable. Default is rxvt. If you have
+# trouble, try uncommenting the following line.
+Mrxvt.termName:		rxvt
+
+# Default title of each tab.
+Mrxvt.tabTitle:			mrxvt
+
+# Border to leave around terminal text
+Mrxvt.internalBorder:		2
+
+# Make double click select whole URL's
+Mrxvt.cutChars:			:=/~#@?%&_-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0abcdefghijklmnopqrstuvwxyz
+
+# Blank the mouse pointer on keystrokes or after 10 seconds of inactivity.
+Mrxvt.pointerBlank:		    True
+Mrxvt.pointerBlankDelay:	10
+
+# Don't close the tab if the secondary screen is displayed (e.g. when running
+# vim).
+Mrxvt.protectSecondary:		True
+
+# Run as a login shell.
+# Mrxvt.loginShell:		True
+
+# Enable session management
+# Mrxvt.sessionMgt:		true
+
+# Set size of mrxvt window
+mrxvt.geometry:       140x40
+
+#
+# ------------------------------- KEYBOARD SHORTCUTS ------------------------------- #
+#
+
+Mrxvt.hotkey.NewTab:    Ctrl+Shift+t
+Mrxvt.hotkey.KillTab:   Ctrl+Shift+w
+
+Mrxvt.hotkey.Tab1:      Ctrl+1
+Mrxvt.hotkey.Tab2:      Ctrl+2
+Mrxvt.hotkey.Tab3:      Ctrl+3
+Mrxvt.hotkey.Tab4:      Ctrl+4
+Mrxvt.hotkey.Tab5:      Ctrl+5
+Mrxvt.hotkey.Tab6:      Ctrl+6
+Mrxvt.hotkey.Tab7:      Ctrl+7
+Mrxvt.hotkey.Tab8:      Ctrl+8
+Mrxvt.hotkey.Tab9:      Ctrl+9
+Mrxvt.hotkey.Tab10:     Ctrl+0
+
+Mrxvt.hotkey.LargelFont: Ctrl+equal
+Mrxvt.hotkey.SmallFont:  Ctrl+minus
+
+Mrxvt.hotkey.CopySel:   Ctrl+Shift+c
+Mrxvt.hotkey.PasteSel:  Ctrl+Shift+v
+
+# ---------------------------------------------------------------------------------- #

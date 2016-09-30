@@ -1,0 +1,5 @@
+unalias ll
+unalias ls
+alias ls='ls --color'
+alias ll='ls --color -laFq'
+stty -ixon
