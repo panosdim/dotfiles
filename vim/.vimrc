@@ -33,7 +33,6 @@
 
 " General
     source $VIMRUNTIME/mswin.vim
-    behave xterm
     filetype plugin indent on       " load filetype plugins/indent settings
     set backspace=indent,eol,start  " make backspace a more flexible
     set clipboard+=unnamed          " share windows clipboard
@@ -251,7 +250,7 @@
     endif " has("autocmd")
 
 " Set color
-    set term=xtermc
+    set term=xterm-256
     set t_Co=256
     colorscheme kalisi
 
