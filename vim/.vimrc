@@ -32,10 +32,9 @@
     set nomore                  " Short nomore
 
 " General
-    source $VIMRUNTIME/mswin.vim
     filetype plugin indent on       " load filetype plugins/indent settings
     set backspace=indent,eol,start  " make backspace a more flexible
-    set clipboard+=unnamed          " share windows clipboard
+    set clipboard=unnamedplus       " share windows clipboard
     set fileformats=unix,dos,mac    " support all three, in this order
     set hidden                      " you can change buffers without saving
     set mouse=a                     " use mouse everywhere
@@ -112,7 +111,7 @@
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 0
     let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
+    let g:syntastic_check_on_wq = 1
     let g:syntastic_enable_perl_checker = 1
 
     "Lightline
@@ -166,6 +165,7 @@
 
     " Tagbar
     nmap <F8> :TagbarToggle<CR>
+    imap <F8> :TagbarToggle<CR>
 
     " neocomplete
     let g:neocomplete#enable_at_startup = 1
@@ -193,10 +193,6 @@
     " Allow us to use Ctrl-s and Ctrl-q as keybinds
     silent !stty -ixon
 
-    " Fix mswin mode
-    "vnoremap <Tab> >gv
-    "vnoremap <S-Tab> <gv
-
     " Close current buffer
     map <C-w> :bd <CR>
 
@@ -211,7 +207,9 @@
     inoremap [7~ <C-o>0
 
     "Indent whole file
-    map <F7> mzgg=G`z
+    map <F7> mzgg=G`zmz
+    imap <F7> mzgg=G`zmz
+
 
     " Make
     map <F5> :make!<CR>
@@ -236,6 +234,56 @@
     noremap + :s/^/#/<CR> :nohl<CR>
     noremap - :s/^#//<CR> :nohl<CR>
 
+    " CTRL-A is Select all
+    noremap <C-A> gggH<C-O>G
+    inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+    cnoremap <C-A> <C-C>gggH<C-O>G
+    onoremap <C-A> <C-C>gggH<C-O>G
+    snoremap <C-A> <C-C>gggH<C-O>G
+    xnoremap <C-A> <C-C>ggVG
+
+    " CTRL-Z is Undo; not in cmdline though
+    noremap <C-Z> u
+    inoremap <C-Z> <C-O>u
+
+    " Use CTRL-Q to do what CTRL-V used to do
+    noremap <C-Q>		<C-V>
+
+    " Use CTRL-S for saving, also in Insert mode
+    noremap <C-S>		:update<CR>
+    vnoremap <C-S>		<C-C>:update<CR>
+    inoremap <C-S>		<C-O>:update<CR>
+
+    " backspace in Visual mode deletes selection
+    vnoremap <BS> d
+
+    " CTRL-X and SHIFT-Del are Cut
+    vnoremap <C-X> "*x
+    vnoremap <S-Del> "+x
+
+    " CTRL-C and CTRL-Insert are Copy
+    vnoremap <C-C> "*y
+    vnoremap <C-Insert> "+y
+
+    " CTRL-V and SHIFT-Insert are Paste
+    map <C-V>		"*gP
+    map <S-Insert>		"+gP
+
+    cmap <C-V>		<C-R>*
+    cmap <S-Insert>		<C-R>+
+
+    " Pasting blockwise and linewise selections is not possible in Insert and
+    " Visual mode without the +virtualedit feature.  They are pasted as if they
+    " were characterwise instead.
+    " Uses the paste.vim autoload script.
+    " Use CTRL-G u to have CTRL-Z only undo the paste.
+
+    exe 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+    exe 'vnoremap <script> <C-V> ' . paste#paste_cmd['v']
+
+    imap <S-Insert>		<C-V>
+    vmap <S-Insert>		<C-V>
+
 " Autocommands
     if has("autocmd")
       autocmd BufNewFile,BufRead,BufEnter * silent! lchdir %:p:h
@@ -250,7 +298,7 @@
     endif " has("autocmd")
 
 " Set color
-    set term=xterm-256
+    set term=xtermc
     set t_Co=256
     colorscheme kalisi
 
