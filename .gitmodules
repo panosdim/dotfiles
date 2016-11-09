@@ -1,0 +1,9 @@
+[submodule "vim/.vim/bundle/lightline"]
+	path = vim/.vim/bundle/lightline
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "vim/.vim/bundle/neocomplete"]
+	path = vim/.vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "vim/.vim/bundle/pymode"]
+	path = vim/.vim/bundle/pymode
+	url = https://github.com/klen/python-mode.git
