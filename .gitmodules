@@ -7,3 +7,30 @@
 [submodule "vim/.vim/bundle/pymode"]
 	path = vim/.vim/bundle/pymode
 	url = https://github.com/klen/python-mode.git
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "vim/.vim/bundle/tagbar"]
+	path = vim/.vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/.vim/bundle/buftabline"]
+	path = vim/.vim/bundle/buftabline
+	url = https://github.com/ap/vim-buftabline.git
+[submodule "vim/.vim/bundle/fish"]
+	path = vim/.vim/bundle/fish
+	url = https://github.com/dag/vim-fish.git
+[submodule "vim/.vim/bundle/fugitive"]
+	path = vim/.vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/bundle/gitgutter"]
+	path = vim/.vim/bundle/gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/.vim/bundle/json"]
+	path = vim/.vim/bundle/json
+	url = https://github.com/elzr/vim-json.git
+[submodule "vim/.vim/bundle/perl"]
+	path = vim/.vim/bundle/perl
+	url = https://github.com/vim-perl/vim-perl.git
+[submodule "vim/.vim/bundle/signature"]
+	path = vim/.vim/bundle/signature
+	url = https://github.com/kshenoy/vim-signature.git
