@@ -1,5 +1,5 @@
-unalias ll
-unalias ls
+unalias ll 2> /dev/null
+unalias ls 2> /dev/null
 alias ls='ls --color'
 alias ll='ls --color -laFq'
 stty -ixon

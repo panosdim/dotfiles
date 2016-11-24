@@ -42,4 +42,4 @@ alias diff    'tkdiff \!*'
 alias pps     'ps -fU xigpadi'
 alias path    'echo $PATH | tr : "\n"'
 alias ld      'echo $LD_LIBRARY_PATH | tr : "\n"'
-alias delkey  'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts
+alias delkey  'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'

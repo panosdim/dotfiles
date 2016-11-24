@@ -45,7 +45,7 @@ set autoexpand
 # Enabled "complete" to "enhance".
 # If you have a file called "complete.tcsh" and you
 # want to edit it, do "vi c.t<TAB>" and that's it.
-set complete=enhance 
+set complete=enhance
 
 # Possible values : cmd complete all
 # Put it to extreme auto.

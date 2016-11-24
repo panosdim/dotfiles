@@ -6,14 +6,15 @@ setenv WINEDITOR nedit
 
 if (`uname` == SunOS) then
   #Set Environment variables
-  setenv PATH /home/xigpadi/opt/bin:/usr/xpg4/bin:/usr/sfw/bin:/home/tool/bin:${PATH}
+  setenv JAVA_HOME /home/xigpadi/opt/jre1.8.0_111
+  setenv PATH /home/xigpadi/opt/bin:/usr/xpg4/bin:/usr/sfw/bin:/home/tool/bin:${JAVA_HOME}/bin:${PATH}
   setenv LD_LIBRARY_PATH /home/xigpadi/opt/lib:${LD_LIBRARY_PATH}
   setenv MANPATH /home/xigpadi/opt/share/man:/home/xigpadi/opt/man:${MANPATH}
   setenv INFOPATH /home/xigpadi/opt/share/info
-  setenv PERL5LIB /home/xigpadi/opt/lib/perl
   setenv CONFIG_SHELL /bin/bash
   setenv CC gcc
   setenv CXX g++
+  setenv PKG_CONFIG_PATH /home/xigpadi/opt/lib/pkgconfig
 endif
 
 #Set TITAN
@@ -22,12 +23,21 @@ setenv QT_HOME_DIR $HOME
 #Set Editor
 setenv EDITOR nedit
 
+#Set TERMINFO
 if ( -d /home/xigpadi/.terminfo ) then
-  #Set TERMINFO
   setenv TERMINFO /home/xigpadi/.terminfo
+endif
+
+#Set TERMCAP
+if ( -f /home/xigpadi/.termcap ) then
+  setenv TERMCAP /home/xigpadi/.termcap
 endif
 
 setenv TERM xtermc
 
 #Set less instead of more
-setenv PAGER 'less -iM'
+setenv PAGER 'most -s'
+
+# Set font directory
+xset fp+ /home/xigpadi/.fonts
+xset fp rehash
