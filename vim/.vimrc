@@ -243,8 +243,8 @@
     silent !stty -ixon
 
   " Close current buffer
-    map   <C-x> :bd <CR>
-    imap  <C-x> <ESC> :bd <CR>
+    map   <C-x> :BD <CR>
+    imap  <C-x> <ESC> :BD <CR>
 
   " Fast switching between buffers
     nnoremap <Tab>      :bnext<CR>
@@ -258,10 +258,12 @@
 
   " Indent whole file
     map   <Leader>i mzgg=G`zmz
+    map   <F6> mzgg=G`zmz
     imap  <F6> <ESC>mzgg=G`zmzi
 
   " Make
     map   <Leader>m :make!<CR>
+    map   <F5> :make!<CR>
     imap  <F5> <ESC>:make!<CR>
 
   " Open header/source file

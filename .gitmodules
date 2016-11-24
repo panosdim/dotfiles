@@ -37,3 +37,6 @@
 [submodule "vim/.vim/bundle/nerdtree"]
 	path = vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/vim-bufkill"]
+	path = vim/.vim/bundle/vim-bufkill
+	url = https://github.com/qpkorr/vim-bufkill.git
