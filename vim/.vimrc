@@ -228,7 +228,6 @@
   " NERDtree
     autocmd vimenter * NERDTree
     map   <Leader>n :NERDTreeToggle<CR>
-    imap  <Leader>n :NERDTreeToggle<CR>
 
   " C-Support
     let g:C_CreateMenusDelayed = 'yes'
@@ -255,11 +254,11 @@
 
   " Indent whole file
     map   <Leader>i mzgg=G`zmz
-    imap  <Leader>i <ESC>mzgg=G`zmzi
+    imap  <F6> <ESC>mzgg=G`zmzi
 
   " Make
     map   <Leader>m :make!<CR>
-    imap  <Leader>m <ESC>:make!<CR>
+    imap  <F5> <ESC>:make!<CR>
 
   " Open header/source file
     nnoremap <Leader>c :e %<.c<CR>
