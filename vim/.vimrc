@@ -167,23 +167,25 @@
     endfunction
 
   " Tagbar
-    nmap <Leader>t :TagbarToggle<CR>
-    imap <Leader>t :TagbarToggle<CR>
+    nmap  <Leader>t :TagbarToggle<CR>
+    map   <F4>      :TagbarToggle<CR>
+    map!  <F4>      :TagbarToggle<CR>
 
   " neocomplete
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
 
-  " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
+    " Plugin key-mappings.
+      inoremap <expr><C-g>     neocomplete#undo_completion()
+      inoremap <expr><C-l>     neocomplete#complete_common_string()
 
     " Recommended key-mappings.
     " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+      inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
     " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
+      inoremap <expr><C-h> neocomplete#smart_close_popup()
+      inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
 
   " Enable omni completion.
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -228,6 +230,8 @@
   " NERDtree
     autocmd vimenter * NERDTree
     map   <Leader>n :NERDTreeToggle<CR>
+    map   <F3>      :NERDTreeToggle<CR>
+    map!  <F3>      :NERDTreeToggle<CR>
 
   " C-Support
     let g:C_CreateMenusDelayed = 'yes'
@@ -240,7 +244,7 @@
 
   " Close current buffer
     map   <C-x> :bd <CR>
-    imap  <C-x> :bd <CR>
+    imap  <C-x> <ESC> :bd <CR>
 
   " Fast switching between buffers
     nnoremap <Tab>      :bnext<CR>
