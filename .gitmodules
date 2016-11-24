@@ -34,3 +34,9 @@
 [submodule "vim/.vim/bundle/signature"]
 	path = vim/.vim/bundle/signature
 	url = https://github.com/kshenoy/vim-signature.git
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/c-support"]
+	path = vim/.vim/bundle/c-support
+	url = https://github.com/WolfgangMehner/c-support.git
