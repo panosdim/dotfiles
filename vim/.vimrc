@@ -166,11 +166,6 @@
       return exists('*fugitive#head') ? fugitive#head() : ''
     endfunction
 
-  " Tagbar
-    nmap  <Leader>t :TagbarToggle<CR>
-    map   <F4>      :TagbarToggle<CR>
-    map!  <F4>      :TagbarToggle<CR>
-
   " neocomplete
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
@@ -227,6 +222,12 @@
     imap <A-9> <C-O><Plug>BufTabLine.Go(9)
     imap <A-0> <C-O><Plug>BufTabLine.Go(10)
 
+  " Tagbar
+    nmap  <Leader>t :TagbarToggle<CR>
+    map   <F4>      :TagbarToggle<CR>
+    map!  <F4>      :TagbarToggle<CR>
+
+
   " NERDtree
     autocmd vimenter * NERDTree
     map   <Leader>n :NERDTreeToggle<CR>
@@ -237,6 +238,10 @@
     let g:C_CreateMenusDelayed = 'yes'
     map  <silent> <F7>    <Esc>:cprevious<CR>
     map  <silent> <F8>    <Esc>:cnext<CR>
+
+  " Autoformat
+    noremap <F2> :Autoformat<CR>
+    au BufWrite * :Autoformat
 
 " Mappings
   " Allow us to use Ctrl-s and Ctrl-q as keybinds

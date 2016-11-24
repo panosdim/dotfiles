@@ -40,3 +40,6 @@
 [submodule "vim/.vim/bundle/vim-bufkill"]
 	path = vim/.vim/bundle/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill.git
+[submodule "vim/.vim/bundle/vim-autoformat"]
+	path = vim/.vim/bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git
