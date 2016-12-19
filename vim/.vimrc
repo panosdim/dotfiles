@@ -241,7 +241,7 @@
 
   " Autoformat
     noremap <F2> :Autoformat<CR>
-    au BufWrite * :Autoformat
+    au BufWrite *.c, *.h :Autoformat
 
 " Mappings
   " Allow us to use Ctrl-s and Ctrl-q as keybinds
