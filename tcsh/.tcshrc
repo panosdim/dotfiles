@@ -1,9 +1,3 @@
-# Set alias
-source ~/.tcshrc.alias
-
-# Set complete
-source ~/.tcshrc.complete
-
 # Set colorful prompt
 set prompt = "%{\033[48;5;32m%} %n %{\033[0m%}%{\033[45m%} %m %{\033[0m%}%{\033[48;5;240m%} %~ %{\033[0m%} "
 
@@ -38,6 +32,12 @@ bindkey -k up history-search-backward
 
 # Remove isit modules
 module rm isit_modules
+
+# Set alias
+source ~/.tcshrc.alias
+
+# Set complete
+source ~/.tcshrc.complete
 
 # Use builtin ls-F instead of ls
 #set listflags = x

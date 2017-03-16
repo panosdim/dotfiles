@@ -1,0 +1,13 @@
+# @(#)Logout
+############################################################
+#
+#         .logout file
+#
+#         Read in when you exit from the login shell.
+#         For performing housekeeping while your are away.
+#
+############################################################
+
+history -S
+
+if ( -e $SETUP/logout.sys ) source $SETUP/logout.sys
