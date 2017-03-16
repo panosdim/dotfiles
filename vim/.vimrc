@@ -234,8 +234,7 @@
     map   <F3>      :NERDTreeToggle<CR>
     map!  <F3>      :NERDTreeToggle<CR>
 
-  " C-Support
-    let g:C_CreateMenusDelayed = 'yes'
+  " Syntastic
     map  <silent> <F7>    <Esc>:cprevious<CR>
     map  <silent> <F8>    <Esc>:cnext<CR>
 

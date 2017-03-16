@@ -8,7 +8,7 @@ function fish_prompt --description 'Write out the prompt'
   
   # Host 
   echo -n "[38;5;124m[48;5;202m " 
-  echo -n (hostname)
+  echo -n (prompt_hostname)
   echo -n " " 
   
   # PWD 

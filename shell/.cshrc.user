@@ -1,62 +1,50 @@
-# Disable XON/XOFF
-stty -ixon
-
 # Set alias
-source ~/.alias
+source ~/.tcshrc.alias
 
 # Set complete
-source ~/.complete
+source ~/.tcshrc.complete
 
 # Set colorful prompt
-set prompt = "%{\033[35m%}%m %{\033[32m%}%U[%@]%u %{\033[31m%}[%C3]%{\033[0m%} %# "
+set prompt = "%{\033[48;5;32m%} %n %{\033[0m%}%{\033[45m%} %m %{\033[0m%}%{\033[48;5;240m%} %~ %{\033[0m%} "
 
-# Set colors
-set listflags = x
-set color = ls-F
-set colorcat
+# Basic settings
+set filec                           # Set file completion of tcsh
+set notify                          # Immediate notification of job comp.
+set autolist                        # Do autolisting of commands while completing. 
+set nobeep                          # Don't beep at all..
+set autocorrect                     # Do autocorrection while completing...
+set autoexpand                      # Use the history of commands to aid expansion.
+set complete = enhance              # Enabled "complete" to "enhance".
+set correct = all                   # Possible values : cmd complete all
+                                    # `all', the entire command line is corrected
+set symlinks = chase                # Possible values: 'chase' 'ignore' 'expand'
+                                    # Symbolic links are expanded to their true values : chase
+set listjobs                        # After a 'Ctrl-Z', it lists all the jobs.
+set rmstar                          # If set, the user is prompted before 'rm *' is executed.
+set printexitvalue                  # If an interactive program exits with a non-zero status, 
+                                    # the shell prints `Exit status'.
+set implicitcd = verbose            # Change directory without using cd
+set history = 2000                  # History remembers past 2000 cmds
+set savehist = (2000 merge)         # Save the most recent 2000 cmds by merginng when I log out              
+set histdup = erase                 # No duplicates in history
+set histfile = ~/.history           # Save history to file
+set color                           # Enables color display for the builtin ls-F and it passes --color=auto to ls
+set colorcat                        # Enables color escape sequence for NLS message files
+set fignore=(.o)                    # Files that are to be ignored from completion.
 
-# Do autolisting of commands while completing.
-# Very handy. Example with "chmod". 
-#  % ch<TAB>
-#  now it shows all possible commands that start with "ch*".
-#  % chm<TAB>
-#  we have seen that there is only one chm* command. Thus, the <TAB> does:
-#  % chmod 
-#  This is among best tricks of TCSH. Learn this and you will be very fast
-#  on the command line.
-set autolist
+# Search history
+bindkey -k down history-search-forward
+bindkey -k up history-search-backward
 
-# Don't beep at all...
-# beeping is annoying, perhaps it is good only when you learn TCSH.
-# If you are a rookie in TCSH, try commenting it out. 
-set nobeep
+# Remove isit modules
+module rm isit_modules
 
-# Do autocorrection while completing...
-# It does some very rudimentary corrections. I was not disatisfied yet.
-# Try:
-# % cd /usr/loca/bin<TAB>
-# % cd /usr/local/bin     <- you get
-set autocorrect
+# Use builtin ls-F instead of ls
+#set listflags = x
+#set color = ls-F
+#set colorcat    
 
-# Use the history of commands to aid expansion.
-# Found in new versions of tcsh (at least 6.10)
-set autoexpand
+# Disable XON/XOFF
+#stty -ixon              
 
-# Enabled "complete" to "enhance".
-# If you have a file called "complete.tcsh" and you
-# want to edit it, do "vi c.t<TAB>" and that's it.
-set complete=enhance
-
-# Possible values : cmd complete all
-# Put it to extreme auto.
-set correct=all
-
-# Symbolic links are expanded to their true values : chase
-# (possible values 'chase' 'ignore' 'expand')
-# When traversing directories with symlinks, this substitures them
-# with the real value. You will like it.
-set symlinks=chase
-
-# After a 'Ctrl-Z', it lists all the jobs.
-set listjobs
 

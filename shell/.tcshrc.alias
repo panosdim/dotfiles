@@ -1,15 +1,17 @@
-# Remove alias
-unalias ll
-unalias ls
+# Set ls alias
+alias ll      'ls -al'
+alias la      'ls -AF'
+alias l1      'ls -1'
 
-# Typicaly "more" does not allow you to use the arrow keys/etc for navigation.
-# Thus, we try to use "less", if it exists. Some distros do not put the
-# fileutils package and it is annoying if the alias exists without the app.
+# Use less instead of more
 if ( -e `where less` ) then
 	alias more 	'less'
 endif
 
-# Alias for "." and ".."
+# Use color grep
+alias grep  'grep --color=auto'
+
+# Directory alias
 # Shows current directory
 alias . 	'pwd'
 # Goes back one directory
@@ -23,23 +25,23 @@ alias -		'cd -'
 # Goes to the root directory
 alias /		'cd /'
 
-# Set alias for ECC
-alias sv  'ct setview \!*'
-alias sc  'ct setcs \!*'
-alias cc  'ct pwv; ct catcs'
-
 # Set Generic alias
+alias helpcommand 'man \!:1'
 alias ddu     'du \!* | sort -n | cut -f2- | xargs du -hs'
 alias ff      '(find \!^ -type d -name home -prune -o -type d -name view -prune -o -type d -name .snapshot -prune -o -name "\!$" -print  > /dev/tty) >& /dev/null'
 alias upper   'echo "\!*" | tr [a-z] [A-Z]'  
 alias lower   'echo "\!*" | tr [A-Z] [a-z]'
 alias upfile  'cat "\!:1" | tr [a-z] [A-Z] \!:2-$'  
 alias lowfile 'cat "\!:1" | tr [A-Z] [a-z] \!:2-$'
-alias ls      'ls-F'
-alias ll      'ls-F -lh'
-alias la      'ls-F -A'
-alias diff    'tkdiff \!*'
 alias pps     'ps -fU xigpadi'
 alias path    'echo $PATH | tr : "\n"'
 alias ld      'echo $LD_LIBRARY_PATH | tr : "\n"'
-alias delkey  'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
+alias dk      'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
+alias h       'history'
+alias x       'exit'
+alias reload  'source ~/.cshrc'
+alias precmd  'echo -n "\033]0;$cwd\!#:q\007\033\\"'
+
+
+
+
