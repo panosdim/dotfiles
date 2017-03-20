@@ -39,12 +39,14 @@ source ~/.tcshrc.alias
 # Set complete
 source ~/.tcshrc.complete
 
+# Disable XON/XOFF flow control (^s/^q)
+stty -ixon  
+
 # Use builtin ls-F instead of ls
 #set listflags = x
 #set color = ls-F
 #set colorcat    
 
-# Disable XON/XOFF
-#stty -ixon              
+            
 
 

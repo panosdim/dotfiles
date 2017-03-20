@@ -1,0 +1,53 @@
+# Eable Color in ls
+if ls --color -d . &> /dev/null
+then
+  alias ls="ls --color=auto"
+elif ls -G -d . &> /dev/null
+then
+  alias ls='ls -G'        # Compact view, show colors
+fi
+
+# List directory contents
+alias sl=ls
+alias la='ls -AF'       # Compact view, show hidden
+alias ll='ls -al'
+alias l1='ls -1'
+
+# Add options for improved verbosity of commands
+alias path='echo -e ${PATH//:/\\n}'
+alias lib='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+alias df='df -kTh'
+alias du='du -kh'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+
+# Colored grep
+# Need to check an existing file for a pattern that will be found to ensure
+# that the check works when on an OS that supports the color option
+if grep --color=auto "a" $HOME/.bashrc.alias &> /dev/null
+then
+  alias grep='grep --color=auto'
+  export GREP_COLOR='1;33'
+fi
+
+# Directory alias
+alias ..='cd ..'         # Go up one directory
+alias ...='cd ../..'     # Go up two directories
+alias ....='cd ../../..' # Go up three directories
+alias -- -='cd -'        # Go back
+alias pd='dirs -v'       # Print dirstack
+alias pc='pushd $cwd'    # Push current location
+alias pu='pushd'
+alias po='popd'
+
+# Set Generic alias
+alias dk='sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
+alias h='history'
+alias q='exit'
+alias reload='source ~/.bashrc'
+
+
+
+
+
