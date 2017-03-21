@@ -121,11 +121,10 @@ shopt -s checkwinsize   # Check window size after each command to avoid annoying
 source ~/.bashrc.alias
 
 # Use bash-completion, if available
-[[ $PS1 && -f /$OPT/share/bash-completion/bash_completion ]] && \
-    . /$OPT/share/bash-completion/bash_completion
+[ -f ~/.bash-completion/bash_completion ] && source ~/.bash-completion/bash_completion
 
 # Use bashmarks
-source ~/.local/bin/bashmarks.sh
+[ -f ~/.bashmarks.sh ] && source ~/.bashmarks.sh
 
 # Disable XON/XOFF flow control (^s/^q)
 stty -ixon  

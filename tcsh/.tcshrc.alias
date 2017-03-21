@@ -1,5 +1,7 @@
+#!/usr/bin/env csh
+
 # Set ls alias
-alias ll      'ls -al'
+alias ll      'ls -ahl'
 alias la      'ls -AF'
 alias l1      'ls -1'
 
@@ -12,14 +14,14 @@ endif
 alias grep  'grep --color=auto'
 
 # Directory alias
-alias . 	'pwd'           # Shows current directory
-alias .. 	'cd ..'         # Goes back one directory
-alias ../	'cd ../'        # Goes back one directory
+alias . 	  'pwd'           # Shows current directory
+alias .. 	  'cd ..'         # Goes back one directory
+alias ../	  'cd ../'        # Goes back one directory
 alias ... 	'cd ../..'      # Goes back two directories
-alias .../	'cd ../../'     # Goes back two directories
-alias -		'cd -'          # Goes to previous directory
-alias /		'cd /'          # Goes to the root directory
-alias d     'dirs -v'       # Print dirstack
+alias .../  'cd ../../'     # Goes back two directories
+alias -		  'cd -'          # Goes to previous directory
+alias /		  'cd /'          # Goes to the root directory
+alias pd    'dirs -v'       # Print dirstack
 alias pc    'pushd $cwd'    # Push current location
 alias pu    'pushd'
 alias po    'popd'

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Eable Color in ls
 if ls --color -d . &> /dev/null
 then
@@ -10,7 +12,7 @@ fi
 # List directory contents
 alias sl=ls
 alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -al'
+alias ll='ls -ahl'
 alias l1='ls -1'
 
 # Add options for improved verbosity of commands

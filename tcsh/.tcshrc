@@ -1,5 +1,7 @@
+#!/usr/bin/env csh
+
 # Set colorful prompt
-set prompt = "%{\033[48;5;32m%} %n %{\033[0m%}%{\033[45m%} %m %{\033[0m%}%{\033[48;5;240m%} %~ %{\033[0m%} "
+set prompt = "%{\033[48;5;32m%} %n %{\033[0m%}%{\033[45m%}`if ("$?SSH_CLIENT") echo "%m"`%{\033[0m%}%{\033[48;5;240m%} %~ %{\033[0m%} "
 
 # Basic settings
 set filec                           # Set file completion of tcsh
@@ -38,6 +40,9 @@ source ~/.tcshrc.alias
 
 # Set complete
 source ~/.tcshrc.complete
+
+# Load cshmarks
+source ~/.cshmarks/cshmarks
 
 # Disable XON/XOFF flow control (^s/^q)
 stty -ixon  

@@ -1,0 +1,19 @@
+#!/usr/bin/env csh
+
+if ( "X$1" == "X" ) then
+  echo "\033[0;31mbookmark name required\033[0m"
+  exit
+else
+  # Find bookmark and goto
+  set bm = `sed -n "/^$1 /p" "$SDIRS"`
+  if ( "$bm" == "" ) then
+    echo "\033[0;31mWARNING: '${1}' bookmark does not exist\033[00m"
+  else
+    set gdir = `echo "$bm" | cut -d' ' -f2`
+    if ( -d $gdir ) then
+      cd $gdir
+    else
+      echo "\033[0;31mWARNING: '${gdir}' does not exist\033[00m"
+    endif
+  endif
+endif

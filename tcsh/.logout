@@ -9,6 +9,3 @@
 ############################################################
 
 history -S
-dirs -S
-
-if ( -e $SETUP/logout.sys ) source $SETUP/logout.sys
