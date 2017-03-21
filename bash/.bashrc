@@ -11,10 +11,10 @@ __prompt_command() {
     
     # Change color for root or sudo
     if [ "$HOME" == "/root" ]; then
-        PS1+="\[\e[48;5;88m\] \u \[\e[m\]"
+        PS1+="\[\e[48;5;202m\] \u \[\e[m\]"
     else
         if sudo -n uptime 2>&1 | grep -q "load"; then
-            PS1+="\[\e[48;5;88m\] \u \[\e[m\]"
+            PS1+="\[\e[48;5;202m\] \u \[\e[m\]"
         else
             PS1+="\[\e[48;5;32m\] \u \[\e[m\]"
         fi        
