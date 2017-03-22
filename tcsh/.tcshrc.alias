@@ -41,7 +41,6 @@ alias dk      'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
 alias h       'history'
 alias q       'exit'
 alias reload  'source ~/.cshrc'
-alias precmd  'echo -n "\033]0;$cwd\!#:q\007\033\\"'
 
 
 

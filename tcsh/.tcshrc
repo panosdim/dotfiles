@@ -2,6 +2,7 @@
 
 # Set colorful prompt
 set prompt = "%{\033[48;5;32m%} %n %{\033[0m%}%{\033[45m%}`if ("$?SSH_CLIENT") echo "%m"`%{\033[0m%}%{\033[48;5;240m%} %~ %{\033[0m%} "
+alias precmd 'source ~/.git_prompt'
 
 # Basic settings
 set filec                           # Set file completion of tcsh
@@ -17,8 +18,6 @@ set symlinks = chase                # Possible values: 'chase' 'ignore' 'expand'
                                     # Symbolic links are expanded to their true values : chase
 set listjobs                        # After a 'Ctrl-Z', it lists all the jobs.
 set rmstar                          # If set, the user is prompted before 'rm *' is executed.
-set printexitvalue                  # If an interactive program exits with a non-zero status, 
-                                    # the shell prints `Exit status'.
 set implicitcd = verbose            # Change directory without using cd
 set history = 2000                  # History remembers past 2000 cmds
 set savehist = (2000 merge)         # Save the most recent 2000 cmds by merginng when I log out              
