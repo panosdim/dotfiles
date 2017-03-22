@@ -1,0 +1,38 @@
+#!/usr/bin/env csh
+
+# get current branch in git repo
+alias __git_current_branch 'git rev-parse --abbrev-ref HEAD >& /dev/null && echo "{`git rev-parse --abbrev-ref HEAD`}"'
+set branch = `__git_current_branch`
+set clean = "%{\033[48;5;25m%}"
+set dirty = "%{\033[48;5;88m%}"
+set staged = "%{\033[48;5;30m%}"
+set unstaged = "%{\033[48;5;92m%}"
+set clr = "%{\033[0m%}"
+
+if ( "X${branch}" != "X" ) then
+	# get current status of git repo
+	set gstatus = `git status`
+	set dirty = `echo -n "${gstatus}" | grep "modified:" >& /dev/null; echo "$?"`
+	set untracked = `echo -n "${gstatus}" | grep "Untracked files" >& /dev/null; echo "$?"`
+	set ahead = `echo -n "${status}" | grep "Your branch is ahead of" >& /dev/null; echo "$?"`
+	set newfile = `echo -n "${status}" | grep "new file:" >& /dev/null; echo "$?"`
+	set renamed = `echo -n "${status}" | grep "renamed:" >& /dev/null; echo "$?"`
+	set deleted = `echo -n "${status}" | grep "deleted:" >& /dev/null; echo "$?"`
+	set bits = ''
+	set color = ''
+	
+	if ( "${renamed}" == "0" ) set bits = ">${bits}"; set color = "%{\033[48;5;30m%}"
+	if ( "${ahead}" == "0" ) set bits = "*${bits}"
+	if ( "${newfile}" == "0" ) set bits = "+${bits}"; set color = "%{\033[48;5;30m%}"
+	if ( "${untracked}" == "0" ) set bits = "?${bits}"; set color = "%{\033[48;5;92m%}"
+	if ( "${deleted}" == "0" ) set bits = "x${bits}"; set color = "%{\033[48;5;30m%}"
+	if ( "${dirty}" == "0" ) set bits = "!${bits}"; set color = "%{\033[48;5;88m%}"
+	if ( "${bits}" != "" ) then
+	  set rprompt = "${color}${branch} ${bits}${clr} "
+	else
+		set rprompt = "${clean}${branch}${clr} "
+	endif
+else
+	set rprompt = ""
+endif
+
