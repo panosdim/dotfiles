@@ -4,24 +4,12 @@
 [submodule "vim/.vim/bundle/neocomplete"]
 	path = vim/.vim/bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
-[submodule "vim/.vim/bundle/pymode"]
-	path = vim/.vim/bundle/pymode
-	url = https://github.com/klen/python-mode.git
-[submodule "vim/.vim/bundle/syntastic"]
-	path = vim/.vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/.vim/bundle/tagbar"]
 	path = vim/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "vim/.vim/bundle/buftabline"]
 	path = vim/.vim/bundle/buftabline
 	url = https://github.com/ap/vim-buftabline.git
-[submodule "vim/.vim/bundle/fish"]
-	path = vim/.vim/bundle/fish
-	url = https://github.com/dag/vim-fish.git
-[submodule "vim/.vim/bundle/fugitive"]
-	path = vim/.vim/bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/.vim/bundle/gitgutter"]
 	path = vim/.vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -40,9 +28,6 @@
 [submodule "vim/.vim/bundle/vim-bufkill"]
 	path = vim/.vim/bundle/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill.git
-[submodule "vim/.vim/bundle/vim-autoformat"]
-	path = vim/.vim/bundle/vim-autoformat
-	url = https://github.com/Chiel92/vim-autoformat.git
 [submodule "fish/.fishmarks"]
 	path = fish/.fishmarks
 	url = https://github.com/techwizrd/fishmarks.git
@@ -58,3 +43,9 @@
 [submodule "zsh/.zsh/zsh-syntax-highlighting"]
 	path = zsh/.zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "tcsh/.cshmarks"]
+	path = tcsh/.cshmarks
+	url = https://github.com/panosdim/cshmarks.git
+[submodule "vim/.vim/bundle/ctrlp.vim"]
+	path = vim/.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git

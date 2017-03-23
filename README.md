@@ -22,5 +22,5 @@ OPTIONS:
  -f      Install fish dotfiles
  -a      Install all dotfiles 
 
-$ ./install.sh  -a
+$ ./install.sh -a
 ```
