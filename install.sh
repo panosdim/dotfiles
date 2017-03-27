@@ -46,6 +46,9 @@ if [ $# -eq 0 ]; then
     exit
 fi
 
+# Check if rsync is available
+command -v rsync >/dev/null && continue || { echo "rsync command not found. Please install rsync program."; exit 1; }
+
 # Change to script directory
 cd "$(dirname "${BASH_SOURCE}")"
 
