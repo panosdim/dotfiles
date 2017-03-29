@@ -41,7 +41,7 @@ alias dk      'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
 alias h       'history'
 alias q       'exit'
 alias reload  'source ~/.cshrc'
-
+alias fp 	  'echo "\!:1" | tr ":" "\n" | grep -qx "\!:2"'
 
 
 

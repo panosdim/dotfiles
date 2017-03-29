@@ -1,12 +1,12 @@
 #!/usr/bin/env csh
 
-setenv OPT /home/xigpadi/opt
-setenv PATH ${OPT}/bin:/home/tool/bin:${PATH}
-setenv LD_LIBRARY_PATH ${OPT}/lib:${LD_LIBRARY_PATH}
-setenv MANPATH ${OPT}/share/man:${OPT}/man:${MANPATH}
-setenv INFOPATH ${OPT}/share/info
-setenv CC gcc
-setenv CXX g++
+setenv OPT ${HOME}/opt
+set -f path=("${OPT}/bin" $path:q)
+fp $LD_LIBRARY_PATH ${OPT}/lib
+if ( $? ) setenv LD_LIBRARY_PATH ${OPT}/lib:${LD_LIBRARY_PATH}
+fp $MANPATH ${OPT}/man
+if ( $? ) setenv MANPATH ${OPT}/man:${MANPATH}
+setenv MAN_POSIXLY_CORRECT 1
 
 # Set INPUTRC
 setenv INPUTRC /home/xigpadi/.inputrc
