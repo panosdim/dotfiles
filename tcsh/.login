@@ -7,6 +7,9 @@ if ( "`echo $LD_LIBRARY_PATH | grep -v ${OPT}/lib`" != "" ) setenv LD_LIBRARY_PA
 if ( "`echo $MANPATH | grep -v ${OPT}/man`" != "" ) setenv MANPATH ${OPT}/man:${MANPATH}
 if ( "`echo $PKG_CONFIG_PATH | grep -v ${OPT}/lib/pkgconfig`" != "" ) setenv PKG_CONFIG_PATH ${OPT}/lib/pkgconfig:${PKG_CONFIG_PATH}
 if ( "`echo $XDG_DATA_DIRS | grep -v ${OPT}/share`" != "" ) setenv XDG_DATA_DIRS ${OPT}/share:${XDG_DATA_DIRS}
+setenv GSETTINGS_SCHEMA_DIR ${OPT}/share/glib-2.0/schemas
+
+
 setenv MAN_POSIXLY_CORRECT 1
 
 # Set INPUTRC
