@@ -17,30 +17,30 @@ alias grep  'grep --color=auto'
 alias . 	  'pwd'           # Shows current directory
 alias .. 	  'cd ..'         # Goes back one directory
 alias ../	  'cd ../'        # Goes back one directory
-alias ... 	'cd ../..'      # Goes back two directories
-alias .../  'cd ../../'     # Goes back two directories
+alias ... 	'cd ../..'        # Goes back two directories
+alias .../  'cd ../../'       # Goes back two directories
 alias -		  'cd -'          # Goes to previous directory
 alias /		  'cd /'          # Goes to the root directory
-alias pd    'dirs -v'       # Print dirstack
-alias pc    'pushd $cwd'    # Push current location
+alias pd    'dirs -v'         # Print dirstack
+alias pc    'pushd $cwd'      # Push current location
 alias pu    'pushd'
 alias po    'popd'
 
 # Set Generic alias
 alias helpcommand 'man \!:1'
-alias ddu     'du \!* | sort -n | cut -f2- | xargs du -hs'
+alias bf      'du -hsx * | sort -rh | head -10'
 alias ff      '(find \!^ -type d -name home -prune -o -type d -name view -prune -o -type d -name .snapshot -prune -o -name "\!$" -print  > /dev/tty) >& /dev/null'
-alias upper   'echo "\!*" | tr [a-z] [A-Z]'  
+alias ncdu    'ncdu --exclude ".snapshot" \!*'
+alias upper   'echo "\!*" | tr [a-z] [A-Z]'
 alias lower   'echo "\!*" | tr [A-Z] [a-z]'
-alias upfile  'cat "\!:1" | tr [a-z] [A-Z] \!:2-$'  
+alias upfile  'cat "\!:1" | tr [a-z] [A-Z] \!:2-$'
 alias lowfile 'cat "\!:1" | tr [A-Z] [a-z] \!:2-$'
-alias pps     'ps -fU xigpadi'
+alias ps      'ps -fU xigpadi'
 alias path    'echo $PATH | tr : "\n"'
+alias manpath 'echo $MANPATH | tr : "\n"'
 alias lib     'echo $LD_LIBRARY_PATH | tr : "\n"'
 alias dk      'sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
 alias h       'history'
 alias q       'exit'
 alias reload  'source ~/.cshrc'
-
-
-
+alias nw			'mrxvt -cf ~/opt/etc/mrxvtrc/TS#\!:1:au &'
