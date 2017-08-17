@@ -11,7 +11,6 @@ set autolist                        # Do autolisting of commands while completin
 set nobeep                          # Don't beep at all..
 set autocorrect                     # Do autocorrection while completing...
 set autoexpand                      # Use the history of commands to aid expansion.
-set complete = enhance              # Enabled "complete" to "enhance".
 set correct = all                   # Possible values : cmd complete all
                                     # `all', the entire command line is corrected
 set symlinks = chase                # Possible values: 'chase' 'ignore' 'expand'

@@ -1,6 +1,7 @@
 #!/usr/bin/env csh
 
 # Set ls alias
+alias ls      'ls --color'
 alias ll      'ls -ahl'
 alias la      'ls -AF'
 alias l1      'ls -1'
@@ -35,7 +36,6 @@ alias upper   'echo "\!*" | tr [a-z] [A-Z]'
 alias lower   'echo "\!*" | tr [A-Z] [a-z]'
 alias upfile  'cat "\!:1" | tr [a-z] [A-Z] \!:2-$'
 alias lowfile 'cat "\!:1" | tr [A-Z] [a-z] \!:2-$'
-alias ps      'ps -fU xigpadi'
 alias path    'echo $PATH | tr : "\n"'
 alias manpath 'echo $MANPATH | tr : "\n"'
 alias lib     'echo $LD_LIBRARY_PATH | tr : "\n"'
