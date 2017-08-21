@@ -2,9 +2,11 @@
 
 # General settings
 setenv OPT ${HOME}/opt
-set -f path=("${OPT}/bin" $path:q)
+setenv JAVA_HOME ${OPT}/jdk1.8.0_131
+set -f path=("${OPT}/bin:${JAVA_HOME}/bin" $path:q)
 if ( "`echo $LD_LIBRARY_PATH | grep -v ${OPT}/lib`" != "" ) setenv LD_LIBRARY_PATH ${OPT}/lib:${LD_LIBRARY_PATH}
 if ( "`echo $MANPATH | grep -v ${OPT}/man`" != "" ) setenv MANPATH ${OPT}/man:${MANPATH}
+if ( "`echo $MANPATH | grep -v ${OPT}/share/man`" != "" ) setenv MANPATH ${OPT}/share/man:${MANPATH}
 if ( "`echo $PKG_CONFIG_PATH | grep -v ${OPT}/lib/pkgconfig`" != "" ) setenv PKG_CONFIG_PATH ${OPT}/lib/pkgconfig:${PKG_CONFIG_PATH}
 if ( "`echo $XDG_DATA_DIRS | grep -v ${OPT}/share`" != "" ) setenv XDG_DATA_DIRS ${OPT}/share:${XDG_DATA_DIRS}
 setenv CPATH ${OPT}/include
@@ -30,10 +32,10 @@ setenv http_proxy
 setenv https_proxy
 
 # Perl local::lib
-setenv MODULEBUILDRC "/home/xigpadi/perl5/.modulebuildrc"
-setenv PERL_MM_OPT "INSTALL_BASE=/home/xigpadi/perl5"
-setenv PERL5LIB "/home/xigpadi/perl5/lib/perl5:/home/xigpadi/perl5/lib/perl5/x86_64-linux-thread-multi"
-set -f path=("/home/xigpadi/perl5/bin" $path:q)
+setenv MODULEBUILDRC "${OPT}/perl5/.modulebuildrc"
+setenv PERL_MM_OPT "INSTALL_BASE=${OPT}/perl5"
+setenv PERL5LIB "${OPT}/perl5/lib/perl5:${OPT}/perl5/lib/perl5/x86_64-linux-thread-multi"
+set -f path=("${OPT}/perl5/bin" $path:q)
 
 # Docbook-xsl
 source ${OPT}/docbook-xsl-1.79.1/.cshrc.incl
