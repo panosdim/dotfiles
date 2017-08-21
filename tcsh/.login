@@ -2,8 +2,7 @@
 
 # General settings
 setenv OPT ${HOME}/opt
-setenv JAVA_HOME ${OPT}/jdk1.8.0_131
-set -f path=("${OPT}/bin:${JAVA_HOME}/bin" $path:q)
+set -f path=("${OPT}/bin" $path:q)
 if ( "`echo $LD_LIBRARY_PATH | grep -v ${OPT}/lib`" != "" ) setenv LD_LIBRARY_PATH ${OPT}/lib:${LD_LIBRARY_PATH}
 if ( "`echo $MANPATH | grep -v ${OPT}/man`" != "" ) setenv MANPATH ${OPT}/man:${MANPATH}
 if ( "`echo $MANPATH | grep -v ${OPT}/share/man`" != "" ) setenv MANPATH ${OPT}/share/man:${MANPATH}
@@ -12,6 +11,20 @@ if ( "`echo $XDG_DATA_DIRS | grep -v ${OPT}/share`" != "" ) setenv XDG_DATA_DIRS
 setenv CPATH ${OPT}/include
 setenv GSETTINGS_SCHEMA_DIR ${OPT}/share/glib-2.0/schemas
 setenv MAN_POSIXLY_CORRECT 1
+
+# Set Java
+set -f path=("${OPT}/jdk/bin" $path:q)
+setenv MANPATH ${OPT}/jdk/man:${MANPATH}
+setenv CLASSPATH ${OPT}/jdk/jre/lib:${OPT}/jdk/lib
+setenv JAVA_HOME ${OPT}/jdk
+setenv JAVA_BINDIR ${OPT}/jdk/bin 
+setenv JAVA_ROOT ${OPT}/jdk 
+setenv JRE_HOME ${OPT}/jdk/jre 
+setenv JDK_HOME ${OPT}/jdk 
+setenv SDK_HOME ${OPT}/jdk 
+
+# Set LANG
+setenv LANG en_US.utf8
 
 # Set INPUTRC
 setenv INPUTRC /home/xigpadi/.inputrc
