@@ -177,8 +177,8 @@ function! LightLineReadonly()
     return ""
   endif
 endfunction
-" =============================================================================
 
+" =============================================================================
 " neocomplete
 " =============================================================================
 let g:neocomplete#enable_at_startup = 1
@@ -202,39 +202,29 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" =============================================================================
 
+" =============================================================================
 " Buftabline
 " =============================================================================
 let g:buftabline_numbers = 2
-nmap <A-1> <Plug>BufTabLine.Go(1)
-nmap <A-2> <Plug>BufTabLine.Go(2)
-nmap <A-3> <Plug>BufTabLine.Go(3)
-nmap <A-4> <Plug>BufTabLine.Go(4)
-nmap <A-5> <Plug>BufTabLine.Go(5)
-nmap <A-6> <Plug>BufTabLine.Go(6)
-nmap <A-7> <Plug>BufTabLine.Go(7)
-nmap <A-8> <Plug>BufTabLine.Go(8)
-nmap <A-9> <Plug>BufTabLine.Go(9)
-nmap <A-0> <Plug>BufTabLine.Go(10)
-imap <A-1> <C-O><Plug>BufTabLine.Go(1)
-imap <A-2> <C-O><Plug>BufTabLine.Go(2)
-imap <A-3> <C-O><Plug>BufTabLine.Go(3)
-imap <A-4> <C-O><Plug>BufTabLine.Go(4)
-imap <A-5> <C-O><Plug>BufTabLine.Go(5)
-imap <A-6> <C-O><Plug>BufTabLine.Go(6)
-imap <A-7> <C-O><Plug>BufTabLine.Go(7)
-imap <A-8> <C-O><Plug>BufTabLine.Go(8)
-imap <A-9> <C-O><Plug>BufTabLine.Go(9)
-imap <A-0> <C-O><Plug>BufTabLine.Go(10)
-" =============================================================================
+let g:buftabline_indicators = 1
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
 
+" =============================================================================
 " Tagbar
 " =============================================================================
-map   <C-b> :TagbarToggle<CR>
 map   <C-j> :TagbarToggle<CR>
-" =============================================================================
 
+" =============================================================================
 " NERDtree
 " =============================================================================
 map   <C-n> :NERDTreeToggle<CR>
@@ -252,17 +242,15 @@ map   <C-x> :BD <CR>
 imap  <C-x> <ESC> :BD <CR>
 
 " Fast switching between buffers
-nnoremap <Tab>      :bnext<CR>
-nnoremap <C-Tab>    :bprevious<CR>
-inoremap <C-Tab>    <C-o>:bnext<CR>
-inoremap <C-S-Tab>  <C-o>:bprevious<CR>
+nnoremap <Leader>n  :bnext<CR>
+nnoremap <Leader>p  :bprevious<CR>
 
 " Go to end/beginning of line
 inoremap [8~ <C-o>$
 inoremap [7~ <C-o>0
 
 " Indent whole file
-map   <C-i> mzgg=G`zmz
+nnoremap <Leader>i mzgg=G`zmz
 
 " Change : with ;
 nnoremap ; :
