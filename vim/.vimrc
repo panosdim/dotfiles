@@ -125,7 +125,8 @@ if has("gui_running")
   set guicursor+=v:ver35-vCursor
   set guicursor+=r-cr:hor20-rCursor
   set guifont=Source\ Code\ Pro\ Medium\ 10
-
+  set lines=999
+  set columns=999
 else
   " Terminal Settings
   " use an red cursor in insert mode
@@ -135,6 +136,13 @@ else
   silent !echo -ne "\033]12;green\007"
   " reset cursor when vim exits
   autocmd VimLeave * silent !echo -ne "\033]12;white\007"
+  " This is console Vim.
+  if exists("+lines")
+    set lines=40
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
 endif
 
 " Plugin Settings
