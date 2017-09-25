@@ -2,7 +2,16 @@ function fish_prompt --description 'Write out the prompt'
   set -l last_status $status
   
   # User 
-  echo -n "[38;5;250m[48;5;240m "
+  if test "$HOME" = "/root"
+      set_color -b red
+  else
+      if sudo -n uptime ^&1 | grep -q "load"
+          set_color -b red
+      else
+          echo -n "[38;5;250m[48;5;240m"
+      end
+  end
+  echo -n " "
   echo -n (whoami)
   echo -n " "
   
