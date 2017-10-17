@@ -52,6 +52,10 @@ if ($?_complete) then
 	set f=`cat $HOME/.ssh/known_hosts | cut -f 1 -d \ ` >& /dev/null
 	set hosts=($hosts $f)
     endif
+    if ( -r $HOME/.ssh/config ) then
+	set f=`grep -E "^Host " $HOME/.ssh/config | cut -f 2 -d \ ` >& /dev/null
+	set hosts=($hosts $f)
+    endif
     unset f
     if ( ! $?hosts ) then
 	set hosts=(hyperion.ee.cornell.edu phaeton.ee.cornell.edu \
