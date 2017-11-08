@@ -44,6 +44,9 @@ source ~/.cshmarks/cshmarks
 
 # Disable XON/XOFF flow control (^s/^q)
 stty -ixon
+
+# Set dircolors
+eval `dircolors -c ~/.dircolors`
   
 
             
