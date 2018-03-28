@@ -35,7 +35,8 @@ OPTIONS:
  -v      Install vim dotfiles
  -m      Install mrxvt dotfiles
  -f      Install fish dotfiles
- -a      Install all dotfiles 
+ -n      Install nedit dotfiles
+ -a      Install all dotfiles
 
 EOF
 }
@@ -78,6 +79,9 @@ while getopts "hbzcvmfa" optname
 	   "f")
 	     rsync -avh --no-perms fish/ ~
 	     ;;
+     "n")
+       rsync -avh --no-perms nedit/ ~
+       ;;
 	   "a")
 	     rsync -avh --no-perms bash/ ~
 	     rsync -avh --no-perms zsh/ ~
@@ -85,6 +89,7 @@ while getopts "hbzcvmfa" optname
 	     rsync -avh --no-perms vim/ ~
 	     rsync -avh --no-perms mrxvt/ ~
 	     rsync -avh --no-perms fish/ ~
+       rsync -avh --no-perms nedit/ ~
 	     ;;
 	   "?")
        usage

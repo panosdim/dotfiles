@@ -1,0 +1,5 @@
+# load Find All macros
+load_macro_file( getenv("HOME")"/.nedit/find_all.nm")
+
+# load Marks macros
+load_macro_file( getenv("HOME")"/.nedit/marks.nm")

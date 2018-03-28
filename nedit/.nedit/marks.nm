@@ -1,0 +1,250 @@
+#==================================================================================
+#
+# Visually mark lines and quickly jump between them.
+#
+# Requires NEdit 5.4RC*2* or higher
+#==================================================================================
+
+# Initializations
+
+# Array to store the color names. The number corresponds to the rangeset, ie
+# rangeset[0] is yellow.
+$jf_mark_color = $empty_array
+$jf_mark_color["yellow"] = 0
+$jf_mark_color["orange"] = 1
+$jf_mark_color["red"   ] = 2# If you add colors, increase the number by one, respectively.
+
+
+# Takes a string as unique name of a rangeset
+# If a single rangeset with name exists in window, returns its id.
+# If no rangeset with name exists in window, creates one and returns its id.
+# If more than one rangesets with name exist already in window, returns -1.
+define jf_init_rangeset_and_color {
+rname = $1
+color = $2
+test = rangeset_get_by_name(rname)
+if (test[] > 1) {
+    return -1
+    }
+if (test[] == 1) {
+    return(test[0])
+    }
+if (test[] == 0) {
+    a = rangeset_create()
+    rangeset_set_name(a, rname)
+    if (color != "") {
+        rangeset_set_color(a, color)
+        }
+    return(a)
+    }
+}
+
+# Marks the current line, unless the given parameter is -1. In this case unmarks
+# the line.
+define jf_mark_line {
+remove = $1
+rangeset = $empty_array
+
+# initialize window
+for (c in $jf_mark_color) {
+    rangeset[$jf_mark_color[c]] = \
+            jf_init_rangeset_and_color("jf_mark_line" $jf_mark_color[c], c)
+    }
+
+for (i in rangeset) {
+    index = rangeset_includes(rangeset[i], $cursor)
+    if (index != 0) {
+        r = rangeset_range(rangeset[i], index)
+        # determine next rangeset number (0,1,2: if 0 then 1, ..., if 2 then 0)
+        j = (i + 1) % $jf_mark_color[]
+        # remove range from current set
+        rangeset_subtract(rangeset[i], r["start"], r["end"])
+        # and add range to next set
+        if (remove != -1) rangeset_add(rangeset[j], r["start"], r["end"])
+        return
+        }
+    }
+# if we reach here, cursor is not in a rangeset, then add the line to rangeset 0
+pos = $cursor
+beginning_of_line()
+start = $cursor
+end_of_line()
+end = $cursor
+set_cursor_pos(pos)
+if (start == end) end++
+if (0 in rangeset) {
+    rangeset_add(rangeset[0], start, end)
+    }
+    else {
+    dialog("ranges not created?")
+    }
+    
+}
+
+# If parameter > 0, presents dialog to choose rangeset color and jumps to the next
+# range of the color (next to the cursor). If parameter < 0, jumps to the previous
+# range. Returns nothing but sets mark(9) to possibly go_back.
+define jf_next_mark_choose {
+direction = $1
+rangeset = $empty_array
+liste = ""
+
+# initialize window
+for (c in $jf_mark_color) {
+    rangeset[$jf_mark_color[c]] = \
+            jf_init_rangeset_and_color("jf_mark_line" $jf_mark_color[c], c)
+    }
+
+for (c in $jf_mark_color) {
+    liste = liste c "\n"
+    }
+liste = substring(liste, 0, length(liste) - 1)
+cn = list_dialog("rangeset", liste, "Ok", "Cancel")
+
+if (cn in $jf_mark_color) {
+    if ($jf_mark_color[cn] in rangeset) {
+        a = rangeset_info(rangeset[$jf_mark_color[cn]])
+        }
+        else {
+        dialog("Range " cn "not defined")
+        return
+        }
+        
+    previous = 0
+    next = 0
+    for (i = 1; i <= a["count"]; i++) {
+        r = rangeset_range(rangeset[$jf_mark_color[cn]], i)
+        if (r["start"] < $cursor) {
+            previous = i
+            }
+            else {
+             next = i
+             if (r["start"] == $cursor) {
+                if (next == a["count"]) next = 1
+                    else next++
+                }
+             break
+             }
+        }
+    if (direction < 0) {
+        # goto previous
+        if (previous == 0) previous = a["count"]
+        r = rangeset_range(rangeset[$jf_mark_color[cn]], previous)
+        }
+        else {
+        if (next == 0) next++
+        r = rangeset_range(rangeset[$jf_mark_color[cn]], next)
+        }
+    if (r[] != 0) {
+        if (jf_marks_in_rangesets($cursor) == 0) {
+            mark(9)
+            }
+        set_cursor_pos(r["start"])
+        }
+        else {
+        dialog("Marker " cn " not defined")
+        }
+    }
+    else {
+    dialog("Marker " cn " not defined")
+    }
+    
+}
+
+# If parameter > 0, jumps to the next range (marked line) regardless of color.
+# If parameter < 0, jumps to the previous range.
+# Returns nothing but sets mark(9) to possibly go_back.
+define jf_next_mark {
+direction = $1
+rangeset = $empty_array
+
+# initialize window
+for (c in $jf_mark_color) {
+    rangeset[$jf_mark_color[c]] = \
+            jf_init_rangeset_and_color("jf_mark_line" $jf_mark_color[c], c)
+    }
+
+# create a single temporary rangeset, add all rangeset to it, so that
+# we have the ranges in this rangesets ordered by index. Hence we can
+# easily jump to the next/previous range from cursor position.
+temp = rangeset_create()
+for (i in rangeset) {
+    d = rangeset_info(rangeset[i])
+    # dialog(d["defined"])
+    if (d["count"] != 0) rangeset_add(temp, rangeset[i])
+    }
+
+a = rangeset_info(temp)
+previous = 0
+next = 0
+for (i = 1; i <= a["count"]; i++) {
+    r = rangeset_range(temp, i)
+    if (r["start"] < $cursor) {
+        previous = i
+        }
+        else {
+         next = i
+         if (r["start"] == $cursor) {
+            if (next == a["count"]) next = 1
+                else next++
+            }
+         break
+         }
+    }
+if (direction < 0) {
+    # goto previous
+    if (previous == 0) previous = a["count"]
+    r = rangeset_range(temp, previous)
+    }
+    else {
+    if (next == 0) next++
+    r = rangeset_range(temp, next)
+    }
+    if (r[] != 0) {
+        if (jf_marks_in_rangesets($cursor) == 0) {
+            mark(9)
+            }
+        set_cursor_pos(r["start"])
+        }
+        else {
+        dialog("No markers defined yet")
+        }
+rangeset_destroy(temp)
+}
+
+
+# Clears all marked lines in the current window.
+define jf_clear_all_marks {
+active_rangesets = $rangeset_list
+for (i = 0; i < active_rangesets[]; i++) {
+    a = rangeset_info(active_rangesets[i]) 
+    pos = search_string(a["name"], "jf_mark_line", 0)
+    if (pos == 0) {
+        rangeset_destroy(active_rangesets[i])
+        }
+    }
+}
+
+
+
+# takes position, returns 1 if position in a rangeset, else 0 
+define jf_marks_in_rangesets {
+pos = $1
+rangeset = $empty_array
+
+# initialize window
+for (c in $jf_mark_color) {
+    rangeset[$jf_mark_color[c]] = \
+            jf_init_rangeset_and_color("jf_mark_line" $jf_mark_color[c], c)
+    }
+
+for (i in rangeset) {
+    index = rangeset_includes(rangeset[i], pos)
+    if (index != 0) {
+        return(1)
+        }
+    }
+
+return (0)
+}
+#==================================================================================
