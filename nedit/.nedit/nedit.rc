@@ -436,10 +436,13 @@ nedit.macroCommands: \
 	}\n\
 	Format File:F2::: {\n\
 		save()\n\
+		# Backup current line\n\
+		bline = $line\n\
 		shell_command("astyle " $file_name, "")\n\
 		select_all()\n\
 		delete()\n\
 		include_file($file_path $file_name)\n\
+		goto_line_number(bline)\n\
 		save()\n\
 		shell_command("rm -f " $file_name ".orig", "")\n\
 	}\n
