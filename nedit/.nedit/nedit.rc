@@ -404,7 +404,7 @@ nedit.macroCommands: \
 		   c = string_dialog("man page for:")\n\
 		else\n\
 		   c = get_selection()\n\
-		p = shell_command("man "c, "")\n\
+		p = shell_command("man 3 "c, "")\n\
 		write_file(p, "/tmp/man "c)\n\
 		open("/tmp/man "c)\n\
 	}\n\
