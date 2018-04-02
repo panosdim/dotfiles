@@ -1,7 +1,7 @@
 # Note: style allman and bsd are synonymous.
---style=allman
+--style=kr
 # Two space tabs
---indent=spaces=2
+--indent=spaces=4
 # Convert tabs to spaces.
 --convert-tabs
 # Allow 'extern "C" {' brace on the same line.
@@ -34,3 +34,9 @@
 --max-code-length=80
 # Linebreaks after logical operators.
 --break-after-logical
+# Indent switches
+--indent-switches
+# Break return type in definition
+--break-return-type
+# Attach return type in declaration
+--attach-return-type-decl
