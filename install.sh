@@ -88,8 +88,7 @@ while getopts "hbzcvmfnsea" optname
          rsync -avh --no-perms astyle/ ~
          ;;
 	   "e")
-         rsync -avh --no-perms neovim/init.vim ~/.config/nvim
-         rsync -avh --no-perms neovim/plug.vim ~/.local/share/nvim/site/autoload
+         rsync -avh --no-perms neovim/ ~
 		 ;;
 	   "a")
 	     rsync -avh --no-perms bash/ ~
@@ -100,8 +99,7 @@ while getopts "hbzcvmfnsea" optname
 	     rsync -avh --no-perms fish/ ~
          rsync -avh --no-perms nedit/ ~
          rsync -avh --no-perms astyle/ ~
-	     rsync -avh --no-perms neovim/init.vim ~/.config/nvim
-         rsync -avh --no-perms neovim/plug.vim ~/.local/share/nvim/site/autoload
+	     rsync -avh --no-perms neovim/ ~
 		 ;;
 	   "?")
        usage
