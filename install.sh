@@ -37,6 +37,7 @@ OPTIONS:
  -f      Install fish dotfiles
  -n      Install nedit dotfiles
  -s      Install astyle dotfiles
+ -e		 Install neovim dotfiles
  -a      Install all dotfiles
 
 EOF
@@ -52,10 +53,10 @@ fi
 command -v rsync >/dev/null || { echo "rsync command not found. Please install rsync program."; exit 1; }
 
 # Change to script directory
-cd "$(dirname "${BASH_SOURCE}")"
+cd "$(dirname "${BASH_SOURCE}")" || exit 1
 
 # Check input parameters and options
-while getopts "hbzcvmfa" optname
+while getopts "hbzcvmfnsea" optname
  do
 	 case "$optname" in
 	   "h")
@@ -86,6 +87,10 @@ while getopts "hbzcvmfa" optname
        "s")
          rsync -avh --no-perms astyle/ ~
          ;;
+	   "e")
+         rsync -avh --no-perms neovim/init.vim ~/.config/nvim
+         rsync -avh --no-perms neovim/plug.vim ~/.local/share/nvim/site/autoload
+		 ;;
 	   "a")
 	     rsync -avh --no-perms bash/ ~
 	     rsync -avh --no-perms zsh/ ~
@@ -95,7 +100,9 @@ while getopts "hbzcvmfa" optname
 	     rsync -avh --no-perms fish/ ~
          rsync -avh --no-perms nedit/ ~
          rsync -avh --no-perms astyle/ ~
-	     ;;
+	     rsync -avh --no-perms neovim/init.vim ~/.config/nvim
+         rsync -avh --no-perms neovim/plug.vim ~/.local/share/nvim/site/autoload
+		 ;;
 	   "?")
        usage
        exit
