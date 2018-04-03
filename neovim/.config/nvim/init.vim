@@ -15,6 +15,7 @@ Plug 'ap/vim-buftabline'
 Plug 'qpkorr/vim-bufkill'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'derekwyatt/vim-fswitch'
+Plug 'Chiel92/vim-autoformat'
 
 " Initialize plugin system
 call plug#end()
@@ -79,6 +80,17 @@ nmap <silent> <Leader>h :FSHere<cr>
 " GutenTag Plugin
 " -----------------------------------------------------------------------------
 let g:gutentags_ctags_tagfile = '.tags'
+
+" -----------------------------------------------------------------------------
+" vim-autoformat Plugin
+" -----------------------------------------------------------------------------
+noremap <Leader>f :Autoformat<CR>
+
+" -----------------------------------------------------------------------------
+" ALE Plugin
+" -----------------------------------------------------------------------------
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " -----------------------------------------------------------------------------
 " Mappings
