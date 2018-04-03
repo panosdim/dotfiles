@@ -156,4 +156,4 @@ set statusline+=%#Row#\ %=\ row:%l/%L\                            "Rownumber/tot
 set statusline+=%#Column#\ col:%03c\                              "Colnr
 set statusline+=%#Status#\ \ %m%r%w\ %P\ \                        "Modified? Readonly? Top/bot.
 set statusline+=%#Linter#\ %{LinterStatus()}\                     "Linter Status
-set statusline+=%#GutenTags#\ %{gutentags#statusline()}\ 		  "GutenTag Status
+set statusline+=%#GutenTags#%{gutentags#statusline()}    		  "GutenTag Status
