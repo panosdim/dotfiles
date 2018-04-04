@@ -1,4 +1,5 @@
 " -----------------------------------------------------------------------------
+"hi FilePath     guifg=#ffdad8  guibg=#880c0e
 " Vim Plug
 " -----------------------------------------------------------------------------
 " Specify a directory for plugins
@@ -23,15 +24,13 @@ call plug#end()
 " -----------------------------------------------------------------------------
 " Set colors
 " -----------------------------------------------------------------------------
-set termguicolors
+set t_Co=256
 colorscheme kalisi
 set background=dark
 
 " -----------------------------------------------------------------------------
 " General
 " -----------------------------------------------------------------------------
-filetype plugin indent on       " load filetype plugins/indent settings
-syntax on						" syntax highlighting on
 set hidden                      " you can change buffers without saving
 set mouse=a                     " use mouse everywhere
 set backspace=indent,eol,start  " make backspace a more flexible
@@ -146,16 +145,16 @@ function! LinterStatus() abort
     \)
 endfunction
 
-hi FilePath     guifg=#ffdad8  guibg=#880c0e
-hi FileType     guifg=#000000  guibg=#F4905C
-hi Encoding     guifg=#292b00  guibg=#f4f597
-hi FileFormat   guifg=#112605  guibg=#aefe7B
-hi Linter       guifg=#051d00  guibg=#7dcc7d
-hi Row          guifg=#ffffff  guibg=#5b7fbb
-hi Column       guifg=#ffffff  guibg=#810085
-hi Status       guifg=#ffffff  guibg=#094afe
-hi GitStatus    guifg=#000000  guibg=#3A406E
-hi GutenTags	guifg=#000000  guibg=#5BC0DE
+hi FilePath     ctermfg=015 ctermbg=088
+hi GitStatus    ctermfg=015 ctermbg=018
+hi FileType     ctermfg=000 ctermbg=208
+hi Encoding     ctermfg=000 ctermbg=228
+hi FileFormat   ctermfg=000 ctermbg=119
+hi Row          ctermfg=015 ctermbg=033
+hi Column       ctermfg=015 ctermbg=089
+hi Status       ctermfg=015 ctermbg=021
+hi Linter       ctermfg=000 ctermbg=036
+hi GutenTags	ctermfg=000 ctermbg=047
 
 set statusline=
 set statusline+=%#FilePath#\ %<%F\                                "File+path
