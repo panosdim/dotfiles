@@ -1,5 +1,4 @@
 " -----------------------------------------------------------------------------
-"hi FilePath     guifg=#ffdad8  guibg=#880c0e
 " Vim Plug
 " -----------------------------------------------------------------------------
 " Specify a directory for plugins
@@ -13,7 +12,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-buftabline'
-Plug 'qpkorr/vim-bufkill'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'Chiel92/vim-autoformat'
@@ -65,12 +63,6 @@ nnoremap <Leader>n  :bnext<CR>
 nnoremap <Leader>p  :bprevious<CR>
 
 " -----------------------------------------------------------------------------
-" BufKill Plugin
-" -----------------------------------------------------------------------------
-map   <C-x> :BD <CR>
-imap  <C-x> <ESC> :BD <CR>
-
-" -----------------------------------------------------------------------------
 " FSwitch Plugin
 " -----------------------------------------------------------------------------
 nmap <silent> <Leader>h :FSHere<cr>
@@ -119,6 +111,10 @@ inoremap  <C-Z> <C-O>u
 noremap   <C-S> :update<CR>
 vnoremap  <C-S> <C-C>:update<CR>
 inoremap  <C-S> <C-O>:update<CR>
+
+" Use CTRL-X to close a buffer
+map   <C-x> :bd <CR>
+imap  <C-x> <ESC> :bd <CR>
 
 " backspace in Visual mode deletes selection
 vnoremap <BS> d
