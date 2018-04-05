@@ -11,10 +11,12 @@ Plug 'freeo/vim-kalisi'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'ap/vim-buftabline'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'Chiel92/vim-autoformat'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'bagrat/vim-workspace'
 
 " Initialize plugin system
 call plug#end()
@@ -82,6 +84,23 @@ noremap <Leader>f :Autoformat<CR>
 " -----------------------------------------------------------------------------
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" -----------------------------------------------------------------------------
+" VIM Workspace Plugin
+" -----------------------------------------------------------------------------
+let g:workspace_use_devicons = 1
+noremap <Tab> :WSNext<CR>
+noremap <S-Tab> :WSPrev<CR>
+noremap <Leader><Tab> :WSClose<CR>
+noremap <Leader><S-Tab> :WSClose!<CR>
+noremap <C-t> :WSTabNew<CR>
+cabbrev bonly WSBufOnly
+
+" -----------------------------------------------------------------------------
+" CtrlP Plugin
+" -----------------------------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " -----------------------------------------------------------------------------
 " Mappings
