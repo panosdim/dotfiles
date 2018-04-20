@@ -25,7 +25,7 @@ call plug#end()
 " Set colors
 " -----------------------------------------------------------------------------
 set t_Co=256
-colorscheme kalisi
+colorscheme kalisi 
 set background=dark
 
 " -----------------------------------------------------------------------------
@@ -44,25 +44,6 @@ set softtabstop=4               " when hitting tab or backspace, how many spaces
 set tabstop=4                   " real tabs should be 8, and they will show with set list on
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
-
-" -----------------------------------------------------------------------------
-" BufTabLine Plugin
-" -----------------------------------------------------------------------------
-let g:buftabline_numbers = 2
-let g:buftabline_indicators = 1
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
-" Fast switching between buffers
-nnoremap <Leader>n  :bnext<CR>
-nnoremap <Leader>p  :bprevious<CR>
 
 " -----------------------------------------------------------------------------
 " FSwitch Plugin
