@@ -1,33 +1,3 @@
-[submodule "vim/.vim/bundle/lightline"]
-	path = vim/.vim/bundle/lightline
-	url = https://github.com/itchyny/lightline.vim.git
-[submodule "vim/.vim/bundle/neocomplete"]
-	path = vim/.vim/bundle/neocomplete
-	url = https://github.com/Shougo/neocomplete.vim.git
-[submodule "vim/.vim/bundle/tagbar"]
-	path = vim/.vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule "vim/.vim/bundle/buftabline"]
-	path = vim/.vim/bundle/buftabline
-	url = https://github.com/ap/vim-buftabline.git
-[submodule "vim/.vim/bundle/gitgutter"]
-	path = vim/.vim/bundle/gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/.vim/bundle/json"]
-	path = vim/.vim/bundle/json
-	url = https://github.com/elzr/vim-json.git
-[submodule "vim/.vim/bundle/perl"]
-	path = vim/.vim/bundle/perl
-	url = https://github.com/vim-perl/vim-perl.git
-[submodule "vim/.vim/bundle/signature"]
-	path = vim/.vim/bundle/signature
-	url = https://github.com/kshenoy/vim-signature.git
-[submodule "vim/.vim/bundle/nerdtree"]
-	path = vim/.vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/.vim/bundle/vim-bufkill"]
-	path = vim/.vim/bundle/vim-bufkill
-	url = https://github.com/qpkorr/vim-bufkill.git
 [submodule "fish/.fishmarks"]
 	path = fish/.fishmarks
 	url = https://github.com/techwizrd/fishmarks.git
@@ -46,6 +16,3 @@
 [submodule "tcsh/.cshmarks"]
 	path = tcsh/.cshmarks
 	url = https://github.com/panosdim/cshmarks.git
-[submodule "vim/.vim/bundle/ctrlp.vim"]
-	path = vim/.vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
