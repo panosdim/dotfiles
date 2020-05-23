@@ -93,9 +93,6 @@ man() {
     command man "$@"
 }
 
-# Don't use ^D to exit
-set -o ignoreeof
-
 # Don't put duplicate lines in the history.
 export HISTCONTROL=ignoredups
 
