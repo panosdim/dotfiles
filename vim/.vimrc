@@ -5,19 +5,19 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-"Plug 'tweekmonster/startuptime.vim'
-Plug 'panosdim/vim-colorstatus'
-Plug 'freeo/vim-kalisi'
 Plug 'w0rp/ale'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'derekwyatt/vim-fswitch'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'bagrat/vim-workspace'
+Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'bagrat/vim-buffet'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Initialize plugin system
 call plug#end()
@@ -26,7 +26,7 @@ call plug#end()
 " Set colors
 " -----------------------------------------------------------------------------
 set t_Co=256
-colorscheme kalisi
+colorscheme onedark
 set background=dark
 
 " -----------------------------------------------------------------------------
@@ -80,15 +80,22 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " -----------------------------------------------------------------------------
-" Colorstatus Plugin
+" Lightline Plugin
 " -----------------------------------------------------------------------------
-let g:colorstatus#vimdevicons = 1
-let g:colorstatus#nerdfont = 1
-
-" -----------------------------------------------------------------------------
-" FSwitch Plugin
-" -----------------------------------------------------------------------------
-nmap <silent> <Leader>h :FSHere<cr>
+let g:lightline = {
+            \ 'colorscheme': 'one',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head'
+            \ },
+            \ }
+let g:lightline.enable = {
+            \ 'statusline': 1,
+            \ 'tabline': 0
+            \ }
 
 " -----------------------------------------------------------------------------
 " GutenTag Plugin
@@ -107,17 +114,13 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " -----------------------------------------------------------------------------
-" VIM Workspace Plugin
+" VIM buffet Plugin
 " -----------------------------------------------------------------------------
-let g:workspace_tab_icon = "\uf00a"
-let g:workspace_left_trunc_icon = "\uf0a8"
-let g:workspace_right_trunc_icon = "\uf0a9"
-noremap <Tab> :WSNext<CR>
-noremap <S-Tab> :WSPrev<CR>
-noremap <Leader><Tab> :WSClose<CR>
-noremap <Leader><S-Tab> :WSClose!<CR>
-noremap <C-t> :WSTabNew<CR>
-cabbrev bonly WSBufOnly
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+noremap <C-t> :tabnew split<CR>
 
 " -----------------------------------------------------------------------------
 " CtrlP Plugin
@@ -166,5 +169,4 @@ vnoremap <BS> d
 " -----------------------------------------------------------------------------
 " Makefile use tab instead of spaces
 autocmd FileType make setlocal noexpandtab
-
 
