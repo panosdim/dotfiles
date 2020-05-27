@@ -11,7 +11,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajmwagar/vim-deus'
 Plug 'mengelbrecht/lightline-bufferline'
 
 " Initialize plugin system
@@ -21,7 +21,7 @@ call plug#end()
 " Set colors
 " -----------------------------------------------------------------------------
 set t_Co=256
-colorscheme PaperColor
+colorscheme deus
 set background=dark
 
 " -----------------------------------------------------------------------------
@@ -67,7 +67,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Lightline Plugin
 " -----------------------------------------------------------------------------
 let g:lightline = {
-			\ 'colorscheme': 'PaperColor',
+			\ 'colorscheme': 'deus',
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
 			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
