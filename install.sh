@@ -37,7 +37,7 @@ OPTIONS:
  -f      Install fish dotfiles
  -n      Install nedit dotfiles
  -s      Install astyle dotfiles
- -e		 Install neovim dotfiles
+ -e      Install neovim dotfiles
  -a      Install all dotfiles
 
 EOF

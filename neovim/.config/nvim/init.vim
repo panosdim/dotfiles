@@ -6,17 +6,13 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'w0rp/ale'
-Plug 'freeo/vim-kalisi'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'derekwyatt/vim-fswitch'
-Plug 'Chiel92/vim-autoformat'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'bagrat/vim-workspace'
+Plug 'itchyny/vim-gitbranch'
+Plug 'itchyny/lightline.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'mengelbrecht/lightline-bufferline'
 
 " Initialize plugin system
 call plug#end()
@@ -25,7 +21,7 @@ call plug#end()
 " Set colors
 " -----------------------------------------------------------------------------
 set t_Co=256
-colorscheme kalisi 
+colorscheme PaperColor
 set background=dark
 
 " -----------------------------------------------------------------------------
@@ -44,38 +40,78 @@ set softtabstop=4               " when hitting tab or backspace, how many spaces
 set tabstop=4                   " real tabs should be 8, and they will show with set list on
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
+set updatetime=100              " Update time
+set noshowmode                  " Do not show mode
+set showtabline=2               " Always show tabline
 
 " -----------------------------------------------------------------------------
-" FSwitch Plugin
+" Folding settings
 " -----------------------------------------------------------------------------
-nmap <silent> <Leader>h :FSHere<cr>
+set nofoldenable                " Don't enable by default use zi
+set foldmethod=indent           " Fold on the indent (damn you python)
+set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
+hi Folded ctermfg=015 ctermbg=013 guibg=#ff00ff guifg=#ffffff
 
 " -----------------------------------------------------------------------------
-" GutenTag Plugin
+" Omni Completion Settings
 " -----------------------------------------------------------------------------
-let g:gutentags_ctags_tagfile = '.tags'
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " -----------------------------------------------------------------------------
-" vim-autoformat Plugin
+" Lightline Plugin
 " -----------------------------------------------------------------------------
-noremap <Leader>f :Autoformat<CR>
+let g:lightline = {
+			\ 'colorscheme': 'PaperColor',
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ],
+			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+			\ },
+			\ 'component_function': {
+			\   'gitbranch': 'gitbranch#name'
+			\ },
+			\ 'tabline': {
+			\   'left': [ ['buffers'] ],
+			\   'right': [ ['close'] ]
+			\ },
+			\ 'component_expand': {
+			\   'buffers': 'lightline#bufferline#buffers'
+			\ },
+			\ 'component_type': {
+			\   'buffers': 'tabsel'
+			\ }
+			\ }
+let g:lightline.enable = {
+            \ 'statusline': 1,
+            \ 'tabline': 1
+            \ }
 
 " -----------------------------------------------------------------------------
-" ALE Plugin
+" Lightline Bufferline Plugin
 " -----------------------------------------------------------------------------
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:lightline#bufferline#show_number=2
 
-" -----------------------------------------------------------------------------
-" VIM Workspace Plugin
-" -----------------------------------------------------------------------------
-let g:workspace_use_devicons = 1
-noremap <Tab> :WSNext<CR>
-noremap <S-Tab> :WSPrev<CR>
-noremap <Leader><Tab> :WSClose<CR>
-noremap <Leader><S-Tab> :WSClose!<CR>
-noremap <C-t> :WSTabNew<CR>
-cabbrev bonly WSBufOnly
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+noremap <C-t> :tabnew split<CR>
 
 " -----------------------------------------------------------------------------
 " CtrlP Plugin
@@ -124,43 +160,3 @@ vnoremap <BS> d
 " -----------------------------------------------------------------------------
 " Makefile use tab instead of spaces
 autocmd FileType make setlocal noexpandtab
-
-" -----------------------------------------------------------------------------
-" Set statusline
-" -----------------------------------------------------------------------------
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-hi FilePath     ctermfg=015 ctermbg=088
-hi GitStatus    ctermfg=015 ctermbg=018
-hi FileType     ctermfg=000 ctermbg=208
-hi Encoding     ctermfg=000 ctermbg=228
-hi FileFormat   ctermfg=000 ctermbg=119
-hi Row          ctermfg=015 ctermbg=033
-hi Column       ctermfg=015 ctermbg=089
-hi Status       ctermfg=015 ctermbg=021
-hi Linter       ctermfg=000 ctermbg=036
-hi GutenTags	ctermfg=000 ctermbg=047
-
-set statusline=
-set statusline+=%#FilePath#\ %<%F\                                "File+path
-set statusline+=%#GitStatus#%{fugitive#statusline()}              "Git Branch
-set statusline+=%#FileType#\ %y\                                  "FileType
-set statusline+=%#Encoding#\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
-set statusline+=%#Encoding#\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-set statusline+=%#FileFormat#\ %{&ff}\                            "FileFormat (dos/unix..) 
-set statusline+=%#Row#\ %=\ row:%l/%L\                            "Rownumber/total
-set statusline+=%#Column#\ col:%03c\                              "Colnr
-set statusline+=%#Status#\ \ %m%r%w\ %P\ \                        "Modified? Readonly? Top/bot.
-set statusline+=%#Linter#\ %{LinterStatus()}\                     "Linter Status
-set statusline+=%#GutenTags#%{gutentags#statusline()}    		  "GutenTag Status
