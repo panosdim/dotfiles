@@ -12,12 +12,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'bagrat/vim-buffet'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'itchyny/vim-gitbranch'
+Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-wombat-scheme'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'sheerun/vim-polyglot'
 
 " Initialize plugin system
 call plug#end()
@@ -26,7 +28,7 @@ call plug#end()
 " Set colors
 " -----------------------------------------------------------------------------
 set t_Co=256
-colorscheme onedark
+colorscheme wombat
 set background=dark
 
 " -----------------------------------------------------------------------------
@@ -58,6 +60,9 @@ set hlsearch                    " Highlight searches
 set incsearch                   " Show the `best match so far' astyped
 set updatetime=100              " Faster updates
 set cursorline                  " Highlight current line
+set noshowmode                  " Do not show mode
+set showtabline=2               " Always show tabline
+
 
 
 " -----------------------------------------------------------------------------
@@ -83,19 +88,51 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Lightline Plugin
 " -----------------------------------------------------------------------------
 let g:lightline = {
-            \ 'colorscheme': 'one',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-            \ },
-            \ 'component_function': {
-            \   'gitbranch': 'fugitive#head'
-            \ },
-            \ }
+			\ 'colorscheme': 'wombat',
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ],
+			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+			\ },
+			\ 'component_function': {
+			\   'gitbranch': 'gitbranch#name'
+			\ },
+			\ 'tabline': {
+			\   'left': [ ['buffers'] ],
+			\   'right': [ ['close'] ]
+			\ },
+			\ 'component_expand': {
+			\   'buffers': 'lightline#bufferline#buffers'
+			\ },
+			\ 'component_type': {
+			\   'buffers': 'tabsel'
+			\ }
+			\ }
 let g:lightline.enable = {
             \ 'statusline': 1,
-            \ 'tabline': 0
+            \ 'tabline': 1
             \ }
+
+" -----------------------------------------------------------------------------
+" Lightline Bufferline Plugin
+" -----------------------------------------------------------------------------
+let g:lightline#bufferline#show_number=2
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+noremap <C-t> :tabnew split<CR>
 
 " -----------------------------------------------------------------------------
 " GutenTag Plugin
@@ -112,15 +149,6 @@ noremap <Leader>f :Autoformat<CR>
 " -----------------------------------------------------------------------------
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" -----------------------------------------------------------------------------
-" VIM buffet Plugin
-" -----------------------------------------------------------------------------
-noremap <Tab> :bn<CR>
-noremap <S-Tab> :bp<CR>
-noremap <Leader><Tab> :Bw<CR>
-noremap <Leader><S-Tab> :Bw!<CR>
-noremap <C-t> :tabnew split<CR>
 
 " -----------------------------------------------------------------------------
 " CtrlP Plugin
