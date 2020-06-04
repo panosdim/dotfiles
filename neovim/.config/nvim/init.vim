@@ -155,6 +155,9 @@ imap  <C-x> <ESC> :bd <CR>
 " backspace in Visual mode deletes selection
 vnoremap <BS> d
 
+" Save file as root
+command! -nargs=0 Sw w !sudo tee % > /dev/null
+
 " -----------------------------------------------------------------------------
 " Autocommands
 " -----------------------------------------------------------------------------
