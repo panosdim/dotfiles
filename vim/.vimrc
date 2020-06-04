@@ -193,7 +193,7 @@ imap  <C-q> <ESC> :bd <CR>
 vnoremap <BS> d
 
 " Save file as root
-command! -nargs=0 Sw w !sudo tee % > /dev/null
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " -----------------------------------------------------------------------------
 " Autocommands
