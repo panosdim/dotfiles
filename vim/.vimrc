@@ -194,6 +194,7 @@ vnoremap <BS> d
 
 " Save file as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+cmap w!!cmap w!! w !sudo tee >/dev/null %
 
 " -----------------------------------------------------------------------------
 " Autocommands
