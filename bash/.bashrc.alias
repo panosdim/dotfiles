@@ -12,7 +12,8 @@ fi
 # List directory contents
 alias sl=ls
 alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -ahl'
+alias ll='ls -hl'
+alias lla='ls -ahl'
 alias l1='ls -1'
 
 # Add options for improved verbosity of commands
