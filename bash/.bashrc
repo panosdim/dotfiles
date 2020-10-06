@@ -128,3 +128,7 @@ stty -ixon
 
 # Set colors for ls
 eval $(dircolors -b ~/.dircolors)
+
+# Use fzf
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
