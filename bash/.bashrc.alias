@@ -49,7 +49,7 @@ alias dk='sed -i -e "\!*d" /home/xigpadi/.ssh/known_hosts'
 alias h='history'
 alias q='exit'
 alias reload='source ~/.bashrc'
-
+alias sc='systemctl'
 
 
 
