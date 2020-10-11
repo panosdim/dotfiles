@@ -49,6 +49,9 @@ alias h='history'
 alias q='exit'
 alias reload='source ~/.bashrc'
 alias sc='systemctl'
+_completion_loader systemctl
+complete -F _systemctl sc
+
 
 
 
