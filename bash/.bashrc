@@ -25,7 +25,17 @@ __prompt_command() {
     PS1+="\[\e[48;5;34m\] \h \[\e[m\]"
   fi
 
-  PS1+="\[\e[48;5;90m\]\`parse_git_branch\`\[\e[m\]\[\e[48;5;240m\] \w \[\e[m\]\[\e[48;5;52m\]\`[ $EXIT -ne 0 ] && echo $EXIT\`\[\e[m\] "
+  PS1+="\[\e[48;5;184m\]\`set_virtualenv\`\[\e[m\]\[\e[48;5;90m\]\`parse_git_branch\`\[\e[m\]\[\e[48;5;240m\] \w \[\e[m\]\[\e[48;5;52m\]\`[ $EXIT -ne 0 ] && echo $EXIT\`\[\e[m\] "
+}
+
+# Determine active Python virtualenv details.
+function set_virtualenv () {
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="(`basename \"$VIRTUAL_ENV\"`)"
+  fi
+  echo ${PYTHON_VIRTUALENV}
 }
 
 # get current branch in git repo
