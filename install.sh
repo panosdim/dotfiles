@@ -29,16 +29,10 @@ This install dotfiles in your home directory.
 
 OPTIONS:
  -h      Show this message
+ -a      Install ash dotfiles
  -b      Install bash dotfiles
- -z      Install zsh dotfiles
- -c      Install tcsh/csh dotfiles
  -v      Install vim dotfiles
- -m      Install mrxvt dotfiles
  -f      Install fish dotfiles
- -n      Install nedit dotfiles
- -s      Install astyle dotfiles
- -e      Install neovim dotfiles
- -a      Install all dotfiles
 
 EOF
 }
@@ -56,7 +50,7 @@ command -v rsync >/dev/null || { echo "rsync command not found. Please install r
 cd "$(dirname "${BASH_SOURCE}")" || exit 1
 
 # Check input parameters and options
-while getopts "hbzcvmfnsea" optname
+while getopts "hbvfa" optname
  do
 	 case "$optname" in
 	   "h")
@@ -66,40 +60,15 @@ while getopts "hbzcvmfnsea" optname
 	   "b")
 	     rsync -avh --no-perms bash/ ~
 	     ;;
-	   "z")
-	     rsync -avh --no-perms zsh/ ~
-	     ;;
-	   "c")
-	     rsync -avh --no-perms tcsh/ ~
-	     ;;
 	   "v")
+	     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	     rsync -avh --no-perms vim/ ~
-	     ;;
-	   "m")
-	     rsync -avh --no-perms mrxvt/ ~
 	     ;;
 	   "f")
 	     rsync -avh --no-perms fish/ ~
 	     ;;
-       "n")
-         rsync -avh --no-perms nedit/ ~
-         ;;
-       "s")
-         rsync -avh --no-perms astyle/ ~
-         ;;
-	   "e")
-         rsync -avh --no-perms neovim/ ~
-		 ;;
 	   "a")
-	     rsync -avh --no-perms bash/ ~
-	     rsync -avh --no-perms zsh/ ~
-	     rsync -avh --no-perms tcsh/ ~
-	     rsync -avh --no-perms vim/ ~
-	     rsync -avh --no-perms mrxvt/ ~
-	     rsync -avh --no-perms fish/ ~
-         rsync -avh --no-perms nedit/ ~
-         rsync -avh --no-perms astyle/ ~
-	     rsync -avh --no-perms neovim/ ~
+	     rsync -avh --no-perms ash/ ~
 		 ;;
 	   "?")
        usage

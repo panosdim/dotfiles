@@ -3,12 +3,9 @@
 " -----------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
-" Airline and themes
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Jellybeans
-Plug 'nanotech/jellybeans.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'sheerun/vim-wombat-scheme'
 
 " Initialize plugin system
 call plug#end()
@@ -17,7 +14,7 @@ call plug#end()
 " Set colors
 " -----------------------------------------------------------------------------
 set t_Co=256
-colorscheme jellybeans
+colorscheme wombat
 set background=dark
 
 " -----------------------------------------------------------------------------
@@ -27,7 +24,7 @@ set nocompatible                " Disable vi compatibility
 set hidden                      " You can change buffers without saving
 set mouse=a                     " Use mouse everywhere
 set backspace=indent,eol,start  " Make backspace a more flexible
-set clipboard=unnamedplus       " Share windows clipboard
+set clipboard+=unnamedplus      " Share windows clipboard
 set colorcolumn=80              " Visible right margin indicator
 set number                      " Turn on line numbers
 set smartcase                   " If there are caps, go case-sensitive
@@ -48,21 +45,58 @@ set hlsearch                    " Highlight searches
 set incsearch                   " Show the `best match so far' astyped
 set updatetime=100              " Faster updates
 set cursorline                  " Highlight current line
-set showcmd                     " Show command in bottom bar
+set showtabline=2               " Always show tab line
 
 " -----------------------------------------------------------------------------
-" Airline Plugin
+" Lightline Plugin
 " -----------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
-let g:airline_theme='jellybeans'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_skip_empty_sections = 1
+let g:lightline = {
+            \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'tabline': {
+            \   'left': [ ['buffers'] ],
+            \   'right': [ ['close'] ]
+            \ },
+            \ 'component_expand': {
+            \   'buffers': 'lightline#bufferline#buffers'
+            \ },
+            \ 'component_type': {
+            \   'buffers': 'tabsel'
+            \ }
+            \ }
+let g:lightline.enable = {
+            \ 'statusline': 1,
+            \ 'tabline': 1
+            \ }
+
+" -----------------------------------------------------------------------------
+" Lightline Bufferline Plugin
+" -----------------------------------------------------------------------------
+let g:lightline#bufferline#show_number=2
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+noremap <C-t> :tabnew split<CR>
 
 " -----------------------------------------------------------------------------
 " Mappings
 " -----------------------------------------------------------------------------
-" Allow us to use Ctrl-s and Ctrl-q as keybinds
-silent !stty -ixon
 
 " Indent whole file
 nnoremap <Leader>i mzgg=G`zmz
@@ -78,26 +112,6 @@ noremap   <C-A> ggVG
 noremap   <C-Z> u
 inoremap  <C-Z> <C-O>u
 
-" Use CTRL-S for saving, also in Insert mode
-noremap   <C-S> :update<CR>
-vnoremap  <C-S> <C-C>:update<CR>
-inoremap  <C-S> <C-O>:update<CR>
-
-" Use CTRL-X to close a buffer
-map   <C-q> :bd <CR>
-imap  <C-q> <ESC> :bd <CR>
-
 " backspace in Visual mode deletes selection
 vnoremap <BS> d
-
-" Save file as root
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-cmap w!!cmap w!! w !sudo tee >/dev/null %
-
-" Tab navigation
-noremap <Tab> :bn<CR>
-noremap <S-Tab> :bp<CR>
-noremap <Leader><Tab> :Bw<CR>
-noremap <Leader><S-Tab> :Bw!<CR>
-noremap <C-t> :tabnew split<CR>
 

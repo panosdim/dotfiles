@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# List directory contents
+alias l.='ls -d .* --color=auto'
+alias ll='ls -lh --color=auto'
+alias ls='ls --color=auto'
+alias l='ls -alF'
+
+
+# Add options for improved verbosity of commands
+alias path='echo -e ${PATH//:/\\n}'
+alias lib='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+alias df='df -kTh'
+alias du='du -kh'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+
+# Colored grep
+alias egrep='grep -E --color=auto'
+alias fgrep='grep -F --color=auto'
+alias grep='grep --color=auto'
+
+# Directory alias
+alias ..='cd ..'         # Go up one directory
+alias ...='cd ../..'     # Go up two directories
+alias cd..='cd ..'
+alias pd='dirs -v'       # Print dirstack
+alias +='pushd .'
+alias -- -='popd'
+
+# Set Generic alias
+alias h='history'
+alias q='exit'
+alias sudo='sudo '
+alias which='(alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot'
