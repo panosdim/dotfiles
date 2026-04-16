@@ -14,13 +14,10 @@ This install dotfiles in your home directory.
 
 OPTIONS:
  -h      Show this message
+ -a      Install ash dotfiles
  -b      Install bash dotfiles
- -z      Install zsh dotfiles
- -c      Install tcsh/csh dotfiles
  -v      Install vim dotfiles
- -m      Install mrxvt dotfiles
  -f      Install fish dotfiles
- -a      Install all dotfiles 
 
 $ ./install.sh -a
 ```
